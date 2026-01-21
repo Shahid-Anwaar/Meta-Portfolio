@@ -1,8 +1,7 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
-// import { useInView } from 'react-intersection-observer';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import {
   Facebook,
   Twitter,
@@ -22,10 +21,12 @@ import { FooterIconKey, FooterProps, FooterQuickLink } from '@/Utils/Types';
 const Footer: React.FC<FooterProps> = ({ menuItems = [], data, contactInfo = [] }) => {
   const footerMenu = (menuItems ?? []).filter((item) => item?.title === 'metalogix-menu');
 
-//   const [ref, inView] = useInView({
-//     triggerOnce: true,
-//     threshold: 0.1,
-//   });
+  // const [ref, inView] = useInView({
+  //   triggerOnce: true,
+  //   threshold: 0.1,
+  // });
+  const ref = useRef<HTMLDivElement | null>(null);
+  const isInView = useInView(ref, { once: true });
 
   const router = useRouter();
   const pathname = usePathname();
@@ -115,9 +116,9 @@ const Footer: React.FC<FooterProps> = ({ menuItems = [], data, contactInfo = [] 
         <div className="footer-main-content">
           {/* Company Info */}
           <motion.div
-            // ref={ref}
+            ref={ref}
             initial={{ opacity: 0, y: 30 }}
-            animate={true ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
             className="footer-company-section"
           >
@@ -177,7 +178,7 @@ const Footer: React.FC<FooterProps> = ({ menuItems = [], data, contactInfo = [] 
           {/* Services */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={true ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="footer-section-wrapper"
           >
@@ -187,7 +188,7 @@ const Footer: React.FC<FooterProps> = ({ menuItems = [], data, contactInfo = [] 
                 <motion.li
                   key={`${service}-${index}`}
                   initial={{ opacity: 0, x: -20 }}
-                  animate={true ? { opacity: 1, x: 0 } : {}}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
                   className="footer-link-item"
                 >
@@ -200,7 +201,7 @@ const Footer: React.FC<FooterProps> = ({ menuItems = [], data, contactInfo = [] 
           {/* Quick Links */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={true ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="footer-section-wrapper"
           >
@@ -210,7 +211,7 @@ const Footer: React.FC<FooterProps> = ({ menuItems = [], data, contactInfo = [] 
                 <motion.li
                   key={`${link.name}-${index}`}
                   initial={{ opacity: 0, x: -20 }}
-                  animate={true ? { opacity: 1, x: 0 } : {}}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
                   className="footer-link-item"
                 >
@@ -235,7 +236,7 @@ const Footer: React.FC<FooterProps> = ({ menuItems = [], data, contactInfo = [] 
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={true ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.6 }}
             className="footer-section-wrapper"
           >
@@ -274,7 +275,7 @@ const Footer: React.FC<FooterProps> = ({ menuItems = [], data, contactInfo = [] 
         {/* Bottom Bar */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={true ? { opacity: 1, y: 0 } : {}}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.8 }}
           className="footer-bottom"
         >
