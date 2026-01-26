@@ -21,7 +21,7 @@ import {
   Target,
 } from "lucide-react";
 import Link from "next/link";
- import type { IndustriesProps, IndustryIconMap, IndustriesPageContent } from "@/Utils/Types";
+ import type { IndustriesProps, IndustryIconMap, IndustriesPageContent } from "@/Utils/types";
 import { INDUSTRIES_LIST, INDUSTRIES_PAGE_CONTENT } from "@/Utils/data";
 
 const Industries = ({ pageContent, industriesData }: IndustriesProps) => {

@@ -23,7 +23,7 @@ import type {
   TestimonialsSectionProps,
   TestimonialsPageContent,
   TestimonialItem,
-} from "@/Utils/Types";
+} from "@/Utils/types";
 import { TESTIMONIALS_DATA, TESTIMONIALS_PAGE_CONTENT } from "@/Utils/data";
 
 const clampRating = (rating: number) => {

@@ -19,7 +19,7 @@ import {
   Monitor,
 } from "lucide-react";
 import Link from "next/link";
-import type { ServicesProps, ServicesIconMap, ServicesPageContent } from "@/Utils/Types";
+import type { ServicesProps, ServicesIconMap, ServicesPageContent } from "@/Utils/types";
 import { SERVICES_PAGE_CONTENT, SERVICES_LIST } from "@/Utils/data";
 import { parseHtmlContent } from "@/lib/html-parser";
 

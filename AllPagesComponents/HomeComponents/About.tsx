@@ -16,7 +16,7 @@ import {
   Rocket,
   Star,
 } from "lucide-react";
-import type { AboutProps, AboutIconMap, AboutPageContent, AboutUsContent }  from "@/Utils/Types";
+import type { AboutProps, AboutIconMap, AboutPageContent, AboutUsContent }  from "@/Utils/types";
 import { ABOUT_PAGE_CONTENT, ABOUT_US } from "@/Utils/data";
 
 const About = ({ pageContent, aboutUs }: AboutProps) => {

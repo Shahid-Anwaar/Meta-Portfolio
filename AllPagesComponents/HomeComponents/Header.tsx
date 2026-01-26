@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { HeaderIndustriesWrapper, HeaderMenuCategory, HeaderMenuItem, HeaderProps } from '@/Utils/Types';
+import { HeaderIndustriesWrapper, HeaderMenuCategory, HeaderMenuItem, HeaderProps } from '@/Utils/types';
 
 
 

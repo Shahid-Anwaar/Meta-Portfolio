@@ -20,7 +20,7 @@ import type {
   TechnologiesSectionProps,
   TechnologyIconKey,
   TechnologiesPageContent,
-} from "@/Utils/Types";
+} from "@/Utils/types";
 import { TECH_STACK_DATA, TECHNOLOGIES_PAGE_CONTENT } from "@/Utils/data";
 
 const TechnologiesSection = ({ techStack, pageContent }: TechnologiesSectionProps) => {

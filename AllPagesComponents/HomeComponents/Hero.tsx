@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 import { HERO_PAGE_CONTENT, HERO_SERVICES, HERO_STATS } from "@/Utils/data";
-import type { HeroProps, HeroIconMap, HeroPageContent } from "@/Utils/Types";
+import type { HeroProps, HeroIconMap, HeroPageContent } from "@/Utils/types";
 
 const Hero = ({ pageContent, heroServices, heroStats }: HeroProps) => {
     // ✅ Merge incoming content with defaults (UI unchanged)

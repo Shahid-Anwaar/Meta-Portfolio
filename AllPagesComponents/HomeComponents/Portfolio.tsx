@@ -19,7 +19,7 @@ import {
 import Link from "next/link";
 
 // import { s3baseUrl } from "@/config/config";
-import type { PortfolioProps, PortfolioPageContent } from "@/Utils/Types";
+import type { PortfolioProps, PortfolioPageContent } from "@/Utils/types";
 import { PORTFOLIO_PAGE_CONTENT, PORTFOLIO_PROJECTS } from "@/Utils/data";
 
 const containerVariants = {

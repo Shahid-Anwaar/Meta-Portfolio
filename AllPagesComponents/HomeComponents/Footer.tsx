@@ -15,7 +15,7 @@ import {
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
-import { FooterIconKey, FooterProps, FooterQuickLink } from '@/Utils/Types';
+import { FooterIconKey, FooterProps, FooterQuickLink } from '@/Utils/types';
 // import { s3baseUrl } from '@/config/config';
 
 const Footer: React.FC<FooterProps> = ({ menuItems = [], data, contactInfo = [] }) => {

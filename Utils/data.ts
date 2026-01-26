@@ -1,4 +1,4 @@
-import { FooterMenu, FooterData, FooterContactInfoItem, TestimonialsPageContent, TestimonialItem, TechnologiesPageContent, TechStackData, PortfolioPageContent, PortfolioProject, IndustriesPageContent, IndustryItem, AboutPageContent, AboutUsContent, ServicesPageContent, ServiceItem, HeroPageContent, HeroService, HeroStat, HeaderData, HeaderMenuGroup } from "./Types";
+import { FooterMenu, FooterData, FooterContactInfoItem, TestimonialsPageContent, TestimonialItem, TechnologiesPageContent, TechStackData, PortfolioPageContent, PortfolioProject, IndustriesPageContent, IndustryItem, AboutPageContent, AboutUsContent, ServicesPageContent, ServiceItem, HeroPageContent, HeroService, HeroStat, HeaderData, HeaderMenuGroup } from "./types";
 
 
 export const defaultHeaderData: HeaderData = {
