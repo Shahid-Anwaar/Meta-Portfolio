@@ -43,7 +43,7 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
   const finalPortfolioData = portfolioData?.length ? portfolioData : PORTFOLIO_PROJECTS;
 
   return (
-    <section ref={ref} id="projects" className="relative  bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden">
+    <section ref={ref} id="projects" className="relative  bg-linear-to-br from-gray-50 via-white to-gray-100 overflow-hidden">
       {/* Always Animated Background Elements */}
       <div className="absolute inset-0">
         <motion.div
@@ -169,7 +169,7 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
                     transition={{ duration: 3, repeat: Infinity, delay: index * 0.2 }}
                     className="portfolio-category-badge"
                   >
-                    <span className="px-3 py-1 bg-gradient-to-r from-purple-500 to-indigo-500 text-white text-xs font-semibold rounded-full shadow-lg">
+                    <span className="px-3 py-1 bg-linear-to-r from-purple-500 to-indigo-500 text-white text-xs font-semibold rounded-full shadow-lg">
                       {project.category}
                     </span>
                   </motion.div>
@@ -230,7 +230,7 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
                 <motion.div
                   animate={{ scaleX: [0, 1, 0.8, 1], opacity: [0.5, 1, 0.7, 1] }}
                   transition={{ duration: 4, repeat: Infinity, delay: index * 0.2 }}
-                  className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-indigo-500 origin-left"
+                  className="absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-purple-500 to-indigo-500 origin-left"
                 />
 
                 <motion.div
@@ -247,12 +247,12 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
         <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="relative bg-gradient-to-r from-slate-800 via-gray-800 to-slate-900 rounded-3xl p-12 text-center overflow-hidden"
+          className="relative bg-linear-to-r from-slate-800 via-gray-800 to-slate-900 rounded-3xl p-12 text-center overflow-hidden"
         >
           <motion.div
             animate={{ backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"], opacity: [0.1, 0.3, 0.1] }}
             transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10"
+            className="absolute inset-0 bg-linear-to-r from-white/10 via-transparent to-white/10"
             style={{ backgroundSize: "200% 200%" }}
           />
 
@@ -303,7 +303,7 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
                     ],
                   }}
                   transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold px-8 py-4 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 flex items-center space-x-3 group"
+                  className="bg-linear-to-r from-blue-500 to-purple-600 text-white font-semibold px-8 py-4 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 flex items-center space-x-3 group"
                 >
                   <span>{finalPageContent.portfolio_get_started_button_text}</span>
                   <motion.div animate={{ x: [0, 5, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>

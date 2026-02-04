@@ -12547,7 +12547,7 @@ h4{
 }
 
 /* Additional background utilities */
-.bg-gradient-to-br {
+.bg-linear-to-br {
   background: linear-gradient(to bottom right, var(--gray-50), white, var(--blue-50));
 }
 

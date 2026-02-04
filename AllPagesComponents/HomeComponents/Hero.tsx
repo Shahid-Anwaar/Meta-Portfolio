@@ -84,7 +84,7 @@ const Hero = ({ pageContent, heroServices, heroStats }: HeroProps) => {
                     {[...Array(6)].map((_, i) => (
                         <motion.div
                             key={`line-${i}`}
-                            className={`absolute h-px bg-gradient-to-r from-transparent via-white/20 to-transparent hero-diagonal-line hero-diagonal-line-${i + 1}`}
+                            className={`absolute h-px bg-linear-to-r from-transparent via-white/20 to-transparent hero-diagonal-line hero-diagonal-line-${i + 1}`}
                             animate={{ x: ["-100%", "100%"], opacity: [0, 1, 0] }}
                             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: i * 1.5 }}
                         />
@@ -217,7 +217,7 @@ const Hero = ({ pageContent, heroServices, heroStats }: HeroProps) => {
                                 initial={{ scale: 0, rotate: -180 }}
                                 animate={{ scale: 1, rotate: 0 }}
                                 transition={{ duration: 0.6, delay: 0.4 }}
-                                className="inline-flex items-center space-x-3 bg-gradient-to-r from-white/15 to-white/5 backdrop-blur-lg rounded-full px-6 py-3 mb-8 border border-white/30 shadow-lg"
+                                className="inline-flex items-center space-x-3 bg-linear-to-r from-white/15 to-white/5 backdrop-blur-lg rounded-full px-6 py-3 mb-8 border border-white/30 shadow-lg"
                             >
                                 <motion.div className="hero-badge-icon" animate={{ rotate: [0, 360] }} transition={{ duration: 3, repeat: Infinity, ease: "linear" }}>
                                     <Code className="w-8 h-8" />
@@ -261,7 +261,7 @@ const Hero = ({ pageContent, heroServices, heroStats }: HeroProps) => {
                                             <ArrowRight className="w-5 h-5" />
                                         </motion.div>
                                     </span>
-                                    <motion.div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity" whileHover={{ scale: 1.1 }} />
+                                    <motion.div className="absolute inset-0 bg-linear-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity" whileHover={{ scale: 1.1 }} />
                                 </motion.button>
 
                                 <Link href={finalPageContent?.view_portfolio_button_link}>
@@ -286,15 +286,15 @@ const Hero = ({ pageContent, heroServices, heroStats }: HeroProps) => {
                                     <motion.div key={index} className="hero-stat-item relative group" whileHover={{ scale: 1.05 }} initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 1.6 + index * 0.1 }}>
                                         <div className="relative">
                                             <motion.div
-                                                className={`hero-stat-number bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}
+                                                className={`hero-stat-number bg-linear-to-r ${stat.color} bg-clip-text text-transparent`}
                                                 animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
                                                 transition={{ duration: 3, repeat: Infinity, ease: "linear", delay: index * 0.5 }}
                                             >
                                                 {stat.number}
                                             </motion.div>
                                             <div className="hero-stat-label">{stat.label}</div>
-                                            <motion.div className={`w-full h-0.5 bg-gradient-to-r ${stat.color} mt-2 rounded-full`} initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.8, delay: 2 + index * 0.2 }} />
-                                            <motion.div className={`absolute inset-0 bg-gradient-to-r ${stat.color} opacity-0 group-hover:opacity-20 rounded-lg blur-xl transition-opacity`} initial={{ scale: 0.8 }} whileHover={{ scale: 1.2 }} />
+                                            <motion.div className={`w-full h-0.5 bg-linear-to-r ${stat.color} mt-2 rounded-full`} initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.8, delay: 2 + index * 0.2 }} />
+                                            <motion.div className={`absolute inset-0 bg-linear-to-r ${stat.color} opacity-0 group-hover:opacity-20 rounded-lg blur-xl transition-opacity`} initial={{ scale: 0.8 }} whileHover={{ scale: 1.2 }} />
                                         </div>
                                     </motion.div>
                                 ))}
