@@ -384,7 +384,7 @@ const Contact = ({ pageContent, contactUs, contactInfo }: ContactProps) => {
                       value={formData.phone}
                       onChange={handleChange}
                       className="contact-form-input"
-                      placeholder="(+92) 300 0800 613"
+                      placeholder="(+92) 300 1122 333"
                       required
                       inputMode="tel"
                       autoComplete="tel"

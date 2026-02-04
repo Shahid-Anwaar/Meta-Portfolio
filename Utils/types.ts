@@ -408,7 +408,7 @@ export type HeaderIndustriesWrapper = {
 };
 
 export type HeaderMenu = {
-  title: string; // "What We Do" | "Who We Help" | "Who We Are" | "Portfolio" | "Career"
+  title: string; // "What I Do
   menu_link?: string; // for Portfolio/Career direct link
   menu_items_title?: string; // heading inside dropdown
   menu_items?: HeaderMenuCategory[] | HeaderIndustriesWrapper[] | any; // API varies

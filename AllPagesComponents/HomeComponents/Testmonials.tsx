@@ -86,7 +86,7 @@ const TestimonialsSection = ({ pageContent, testimonials }: TestimonialsSectionP
   };
 
   return (
-    <section ref={ref} className="testimonials-section">
+    <section id="testmonials" ref={ref} className="testimonials-section">
       {/* Always Animated Background Elements */}
       <div className="testimonials-bg-elements">
         <motion.div

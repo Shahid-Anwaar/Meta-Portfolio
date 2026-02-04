@@ -43,7 +43,7 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
   const finalPortfolioData = portfolioData?.length ? portfolioData : PORTFOLIO_PROJECTS;
 
   return (
-    <section ref={ref} className="relative  bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden">
+    <section ref={ref} id="projects" className="relative  bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden">
       {/* Always Animated Background Elements */}
       <div className="absolute inset-0">
         <motion.div

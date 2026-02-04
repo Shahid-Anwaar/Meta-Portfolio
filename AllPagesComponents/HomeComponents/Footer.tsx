@@ -31,7 +31,6 @@ const Footer: React.FC<FooterProps> = ({ menuItems = [], data, contactInfo = [] 
   const router = useRouter();
   const pathname = usePathname();
 
-  // Smooth scroll to section by id
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith('/#') || href.startsWith('#')) {
       e.preventDefault();

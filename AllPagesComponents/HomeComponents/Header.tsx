@@ -53,9 +53,9 @@ const Header: React.FC<HeaderProps> = ({ menuItems = [], data }) => {
 
     if (!menus?.length) return fallback;
 
-    const whatWeDoMenu = menus.find((m) => m.title === 'What We Do');
-    const whoWeHelpMenu = menus.find((m) => m.title === 'Who We Help');
-    const whoWeAreMenu = menus.find((m) => m.title === 'Who We Are');
+    const whatWeDoMenu = menus.find((m) => m.title === 'What I Do');
+    const whoWeHelpMenu = menus.find((m) => m.title === 'Who I Help');
+    const whoWeAreMenu = menus.find((m) => m.title === 'Who I Am');
 
     const capabilities = (whatWeDoMenu?.menu_items as HeaderMenuCategory[]) ?? [];
     const industriesData = (whoWeHelpMenu?.menu_items as HeaderIndustriesWrapper[]) ?? [];
@@ -68,28 +68,29 @@ const Header: React.FC<HeaderProps> = ({ menuItems = [], data }) => {
 
   const { capabilities, industries, aboutItems } = useMemo(getMenuStructure, [menus]);
 
-  const titleWhatWeDo = menus.find((m) => m.title.includes('What We Do'))?.title?.trim() || 'What We Do';
-  const titleWhoWeHelp = menus.find((m) => m.title.includes('Who We Help'))?.title?.trim() || 'Who We Help';
-  const titleWhoWeAre = menus.find((m) => m.title.includes('Who We Are'))?.title?.trim() || 'Who We Are';
+  const titleWhatWeDo = menus.find((m) => m.title.includes('What I Do'))?.title?.trim() || 'What I Do';
+  const titleWhoWeHelp = menus.find((m) => m.title.includes('Who I Help'))?.title?.trim() || 'Who I Help';
+  const titleWhoWeAre = menus.find((m) => m.title.includes('Who I Am'))?.title?.trim() || 'Who I Am';
 
-  const whatWeDoHeading = menus.find((m) => m.title === 'What We Do')?.menu_items_title || 'Capabilities';
-  const whoWeHelpHeading = menus.find((m) => m.title === 'Who We Help')?.menu_items_title || 'Industries';
+  const whatWeDoHeading = menus.find((m) => m.title === 'What I Do')?.menu_items_title || 'Capabilities';
+  const whoWeHelpHeading = menus.find((m) => m.title === 'Who I Help')?.menu_items_title || 'Industries';
 
-  const portfolioMenu = menus.find((m) => m.title.includes('Portfolio'));
-  const careerMenu = menus.find((m) => m.title.includes('Career'));
+  const servicesMenu = menus.find((m) => m.title.includes('What I Do'));
+  const industriesMenu = menus.find((m) => m.title.includes('Who I Help'));
+  const portfolioMenu = menus.find((m) => m.title.includes('Projects'));
+  const aboutMenu = menus.find((m) => m.title.includes('Who I Am'));
 
   const headerLogoLink = data?.header_logo_link ?? '/';
-  const headerLogoScrolled =  (data?.header_logo_1 ?? '');
-  const headerLogoTop =  (data?.header_logo_2 ?? '');
+  const headerLogoScrolled = (data?.header_logo_1 ?? '');
+  const headerLogoTop = (data?.header_logo_2 ?? '');
 
   return (
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200' : 'bg-transparent'
-      }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200' : 'bg-transparent'
+        }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -110,14 +111,13 @@ const Header: React.FC<HeaderProps> = ({ menuItems = [], data }) => {
 
           {/* Desktop Navigation */}
           <nav className="hidden xl:flex items-center space-x-6 2xl:space-x-8">
-            {/* What We Do - Mega Menu */}
-            <div className="relative group">
+            {/* What I Do - Mega Menu */}
+            {/* <div className="relative group">
               <button
                 type="button"
                 onClick={() => handleDropdownToggle('capabilities')}
-                className={`flex items-center space-x-1 font-medium transition-colors ${
-                  isScrolled ? 'text-gray-700 hover:text-[#040364]' : 'text-white hover:text-[#EEAD0E]'
-                }`}
+                className={`flex items-center space-x-1 font-medium transition-colors ${isScrolled ? 'text-gray-700 hover:text-[#040364]' : 'text-white hover:text-[#EEAD0E]'
+                  }`}
               >
                 <span>{titleWhatWeDo}</span>
                 <ChevronDown className="w-4 h-4" />
@@ -156,16 +156,15 @@ const Header: React.FC<HeaderProps> = ({ menuItems = [], data }) => {
                   </div>
                 </div>
               )}
-            </div>
+            </div> */}
 
-            {/* Who We Help - Industries */}
-            <div className="relative group">
+            {/* Who I Help - Industries */}
+            {/* <div className="relative group">
               <button
                 type="button"
                 onClick={() => handleDropdownToggle('industries')}
-                className={`flex items-center space-x-1 font-medium transition-colors ${
-                  isScrolled ? 'text-gray-700 hover:text-[#040364]' : 'text-white hover:text-[#EEAD0E]'
-                }`}
+                className={`flex items-center space-x-1 font-medium transition-colors ${isScrolled ? 'text-gray-700 hover:text-[#040364]' : 'text-white hover:text-[#EEAD0E]'
+                  }`}
               >
                 <span>{titleWhoWeHelp}</span>
                 <ChevronDown className="w-4 h-4" />
@@ -194,16 +193,15 @@ const Header: React.FC<HeaderProps> = ({ menuItems = [], data }) => {
                   </div>
                 </div>
               )}
-            </div>
+            </div> */}
 
-            {/* Who We Are */}
-            <div className="relative group">
+            {/* Who I Am */}
+            {/* <div className="relative group">
               <button
                 type="button"
                 onClick={() => handleDropdownToggle('about')}
-                className={`flex items-center space-x-1 font-medium transition-colors ${
-                  isScrolled ? 'text-gray-700 hover:text-[#040364]' : 'text-white hover:text-[#EEAD0E]'
-                }`}
+                className={`flex items-center space-x-1 font-medium transition-colors ${isScrolled ? 'text-gray-700 hover:text-[#040364]' : 'text-white hover:text-[#EEAD0E]'
+                  }`}
               >
                 <span>{titleWhoWeAre}</span>
                 <ChevronDown className="w-4 h-4" />
@@ -231,30 +229,39 @@ const Header: React.FC<HeaderProps> = ({ menuItems = [], data }) => {
                   </div>
                 </div>
               )}
-            </div>
-
+            </div> */}
+             {servicesMenu && (
+              <button onClick={() => scrollToSection(servicesMenu.menu_link)}
+                className={`flex items-center space-x-1 font-medium transition-colors ${isScrolled ? 'text-gray-700 hover:text-[#040364]' : 'text-white hover:text-[#EEAD0E]'
+                  }`}
+              >
+                {servicesMenu.title?.trim() || 'Portfolio'}
+              </button>
+            )}
+             {industriesMenu && (
+              <button onClick={() => scrollToSection(industriesMenu.menu_link)}
+                className={`flex items-center space-x-1 font-medium transition-colors ${isScrolled ? 'text-gray-700 hover:text-[#040364]' : 'text-white hover:text-[#EEAD0E]'
+                  }`}
+              >
+                {industriesMenu.title?.trim() || 'Portfolio'}
+              </button>
+            )}
+            {aboutMenu && (
+              <button onClick={() => scrollToSection(aboutMenu.menu_link)}
+                className={`flex items-center space-x-1 font-medium transition-colors ${isScrolled ? 'text-gray-700 hover:text-[#040364]' : 'text-white hover:text-[#EEAD0E]'
+                  }`}
+              >
+                {aboutMenu.title?.trim() || 'Career'}
+              </button>
+            )}
             {/* Portfolio */}
             {portfolioMenu && (
-              <Link
-                href={portfolioMenu.menu_link || '/portfolio'}
-                className={`flex items-center space-x-1 font-medium transition-colors ${
-                  isScrolled ? 'text-gray-700 hover:text-[#040364]' : 'text-white hover:text-[#EEAD0E]'
-                }`}
+              <button onClick={() => scrollToSection(portfolioMenu.menu_link)}
+                className={`flex items-center space-x-1 font-medium transition-colors ${isScrolled ? 'text-gray-700 hover:text-[#040364]' : 'text-white hover:text-[#EEAD0E]'
+                  }`}
               >
                 {portfolioMenu.title?.trim() || 'Portfolio'}
-              </Link>
-            )}
-
-            {/* Career */}
-            {careerMenu && (
-              <Link
-                href={careerMenu.menu_link || '/careers'}
-                className={`flex items-center space-x-1 font-medium transition-colors ${
-                  isScrolled ? 'text-gray-700 hover:text-[#040364]' : 'text-white hover:text-[#EEAD0E]'
-                }`}
-              >
-                {careerMenu.title?.trim() || 'Career'}
-              </Link>
+              </button>
             )}
           </nav>
 
@@ -283,7 +290,7 @@ const Header: React.FC<HeaderProps> = ({ menuItems = [], data }) => {
           <div className="xl:hidden fixed inset-0 top-16 z-40">
             <div className="flex flex-col h-auto">
               <div className="flex-1 overflow-y-auto px-3 sm:px-4 pt-4 pb-6 bg-white">
-                {/* Mobile What We Do */}
+                {/* Mobile What I Do */}
                 <div>
                   <button
                     type="button"
@@ -322,7 +329,7 @@ const Header: React.FC<HeaderProps> = ({ menuItems = [], data }) => {
                   )}
                 </div>
 
-                {/* Mobile Who We Help */}
+                {/* Mobile Who I Help */}
                 <div>
                   <button
                     type="button"
@@ -355,7 +362,7 @@ const Header: React.FC<HeaderProps> = ({ menuItems = [], data }) => {
                   )}
                 </div>
 
-                {/* Mobile Who We Are */}
+                {/* Mobile Who I Am */}
                 <div>
                   <button
                     type="button"
@@ -385,27 +392,22 @@ const Header: React.FC<HeaderProps> = ({ menuItems = [], data }) => {
                     </div>
                   )}
                 </div>
-
-                {/* Portfolio */}
-                {portfolioMenu && (
+                {aboutMenu && (
                   <Link
-                    href={portfolioMenu.menu_link || '/portfolio'}
+                    href={aboutMenu.menu_link || 'about'}
                     className="block w-full text-left px-3 py-3 text-gray-700 hover:text-[#040364] font-medium text-base sm:text-lg rounded-lg hover:bg-gray-50 transition-colors"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    {portfolioMenu.title?.trim() || 'Portfolio'}
+                    {aboutMenu.title?.trim() || 'Career'}
                   </Link>
                 )}
-
-                {/* Career */}
-                {careerMenu && (
-                  <Link
-                    href={careerMenu.menu_link || '/careers'}
+                {portfolioMenu && (
+                  <button onClick={() => scrollToSection(portfolioMenu.menu_link)}
                     className="block w-full text-left px-3 py-3 text-gray-700 hover:text-[#040364] font-medium text-base sm:text-lg rounded-lg hover:bg-gray-50 transition-colors"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                  // onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    {careerMenu.title?.trim() || 'Career'}
-                  </Link>
+                    {portfolioMenu.title?.trim() || 'Portfolio'}ttt
+                  </button>
                 )}
 
                 <button onClick={() => scrollToSection(data?.header_button_link)} className="header-mobile">

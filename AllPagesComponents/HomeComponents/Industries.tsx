@@ -68,7 +68,7 @@ const Industries = ({ pageContent, industriesData }: IndustriesProps) => {
   };
 
   return (
-    <section ref={ref} className="industries-section">
+    <section id="industries" ref={ref} className="industries-section">
       {/* Always Animated Background Elements */}
       <div className="absolute inset-0">
         <motion.div
