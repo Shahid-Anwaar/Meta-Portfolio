@@ -11,6 +11,7 @@ import {
   Phone,
   MapPin,
   type LucideIcon,
+  MessageCircle,
 } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
@@ -128,49 +129,68 @@ const Footer: React.FC<FooterProps> = ({ menuItems = [], data, contactInfo = [] 
                 transition={{ duration: 0.3 }}
               >
                 <Image
-                  src={(data?.footer_logo || '')}
+                  src={"/images/11.png"}
                   alt={data?.footer_alt_text || 'brand logo'}
-                  width={160}
-                  height={160}
+                  width={80}
+                  height={80}
                 />
               </motion.div>
             </div>
 
             <p className="footer-description">{data?.footer_website_description_text}</p>
-
             <div className="footer-social-links">
-              {FacebookIcon && data?.footer_facbook_icon_link && (
-                <Link
-                  href={data.footer_facbook_icon_link}
-                  className="footer-social-link"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <FacebookIcon className="footer-social-icon" />
-                </Link>
-              )}
+              {/* WhatsApp */}
 
-              {InstagramIcon && data?.footer_insta_icon_link && (
-                <Link
-                  href={data.footer_insta_icon_link}
-                  className="footer-social-link"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <InstagramIcon className="footer-social-icon" />
-                </Link>
-              )}
+              <Link
+                href="https://wa.me/923076669269?text=Hi%20Shahid%2C%20I%20visited%20your%20portfolio%20and%20want%20to%20discuss%20a%20project."
+                className="footer-social-link"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="WhatsApp"
+              >
+                <MessageCircle className="footer-social-icon" />
+              </Link>
 
-              {LinkedInIcon && data?.footer_linkedin_icon_link && (
-                <Link
-                  href={data.footer_linkedin_icon_link}
-                  className="footer-social-link"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <LinkedInIcon className="footer-social-icon" />
-                </Link>
-              )}
+
+              {/* Phone */}
+              {/* <a
+                href="tel:+923001234567" // ✅ replace
+                className="footer-social-link"
+                aria-label="Phone"
+              >
+                <Phone className="footer-social-icon" />
+              </a> */}
+
+              {/* Email */}
+              {/* <a
+                href="mailto:youremail@gmail.com" // ✅ replace
+                className="footer-social-link"
+                aria-label="Email"
+              >
+                <Mail className="footer-social-icon" />
+              </a> */}
+
+              {/* LinkedIn */}
+              <Link
+                href="https://www.linkedin.com/in/shahid-anwaar-094a68315" // ✅ replace
+                className="footer-social-link"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="footer-social-icon" />
+              </Link>
+
+              {/* Facebook */}
+              <Link
+                href="https://www.facebook.com/profile.php?id=100018561501081" // ✅ replace
+                className="footer-social-link"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook"
+              >
+                <Facebook className="footer-social-icon" />
+              </Link>
             </div>
           </motion.div>
 

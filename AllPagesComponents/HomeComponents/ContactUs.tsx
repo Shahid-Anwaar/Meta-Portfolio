@@ -2,7 +2,7 @@
 
 // import { send_application_form_email } from "@/DAL";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, CheckCircle2 } from "lucide-react";
+import { Mail, Phone, MapPin, Send, CheckCircle2, Clock, BadgeCheck, Sparkles, ShieldCheck } from "lucide-react";
 import React, { useCallback, useMemo, useState } from "react";
 // import { useSnackbar } from "notistack";
 
@@ -55,8 +55,8 @@ const normalizePhone = (value: string) =>
     .trim();
 
 const Contact = ({ pageContent, contactUs, contactInfo }: ContactProps) => {
-//   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
-//   const { enqueueSnackbar } = useSnackbar();
+  //   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  //   const { enqueueSnackbar } = useSnackbar();
 
   const [formData, setFormData] = useState<FormState>({
     name: "",
@@ -86,31 +86,31 @@ const Contact = ({ pageContent, contactUs, contactInfo }: ContactProps) => {
     const message = (formData.message || "").trim();
 
     if (!name) {
-    //   enqueueSnackbar("Name is required", { variant: "error" });
+      //   enqueueSnackbar("Name is required", { variant: "error" });
       return false;
     }
     if (!email) {
-    //   enqueueSnackbar("Email is required", { variant: "error" });
+      //   enqueueSnackbar("Email is required", { variant: "error" });
       return false;
     }
     if (!emailRegex.test(email)) {
-    //   enqueueSnackbar("Please enter a valid email address.", { variant: "error" });
+      //   enqueueSnackbar("Please enter a valid email address.", { variant: "error" });
       return false;
     }
     if (!phone) {
-    //   enqueueSnackbar("Mobile number is required", { variant: "error" });
+      //   enqueueSnackbar("Mobile number is required", { variant: "error" });
       return false;
     }
 
     // Minimum digits check (ignoring + and spaces)
     const digits = phone.replace(/[^\d]/g, "");
     if (digits.length < 7) {
-    //   enqueueSnackbar("Mobile number is too short.", { variant: "error" });
+      //   enqueueSnackbar("Mobile number is too short.", { variant: "error" });
       return false;
     }
 
     if (!message) {
-    //   enqueueSnackbar("Message is required", { variant: "error" });
+      //   enqueueSnackbar("Message is required", { variant: "error" });
       return false;
     }
 
@@ -286,15 +286,15 @@ const Contact = ({ pageContent, contactUs, contactInfo }: ContactProps) => {
       <div className="contact-container">
         {/* Header */}
         <motion.div
-        //   ref={ref}
+          //   ref={ref}
           initial={{ opacity: 0, y: 50 }}
-           animate={true ? { opacity: 1, y: 0 } : {}}
+          animate={true ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
           className="contact-header-wrapper"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
-             animate={true ? { opacity: 1, scale: 1 } : {}}
+            animate={true ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="subtitle-container"
           >
@@ -436,78 +436,93 @@ const Contact = ({ pageContent, contactUs, contactInfo }: ContactProps) => {
           </motion.div>
 
           {/* Map + quick info */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-         animate={true ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="contact-map-section"
-          >
-            <div className="contact-map-header">
+          <div className="">
+            <div className="">
               <motion.div
-                className="contact-map-icon"
-                animate={{ scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="w-full px-8"
               >
-                <MapPin className="w-8 h-8" />
-              </motion.div>
-              <div>
-                <h4 className="contact-map-title">{contactUs?.visit_message_title || ""}</h4>
-                <p className="contact-map-subtitle">{contactUs?.visit_message_description || ""}</p>
-              </div>
-            </div>
+                <h4 className="text-xl font-extrabold text-gray-900">
+                  Why Choose Me?
+                </h4>
 
-            <div className="contact-map-container">
-              <div className="contact-map-wrapper">
-                <iframe
-                  src={mapSrc}
-                  className="contact-google-map"
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title={contactUs?.map_title || "Metalogix Software House Location - Sahiwal"}
-                />
+                <div className="mt-4 space-y-8">
+                  {/* 1 */}
+                  <div>
+                    <div className="flex items-start gap-4">
+                      <div className="bg-gray-100 p-4 rounded-xl">
+                        <Clock className="w-8 h-8 text-gray-500" />
+                      </div>
 
-                <div className="contact-map-overlay">
-                  <div className="contact-map-info">
-                    <div className="contact-map-marker">
-                      <MapPin className="w-6 h-6" />
+                      <div>
+                        <h5 className="font-extrabold text-gray-600">Quick Response</h5>
+                        <p className="mt-2 text-sm leading-6 text-gray-600">
+                          I respect your time. You’ll usually get a reply fast during business hours so your work never gets stuck.
+                        </p>
+                      </div>
                     </div>
-                    <div className="contact-map-details">
-                      <h5 className="contact-map-company">
-                        {contactUs?.map_company || "Metalogix Software House"}
-                      </h5>
-                      <p className="contact-map-address">
-                        {contactUs?.map_address_line1 || "Saeed Center, Jail Road"}
-                        <br />
-                        {contactUs?.map_address_line2 || "Sahiwal, Pakistan"}
-                      </p>
+                  </div>
+
+                  {/* 2 */}
+                  <div>
+                    <div className="flex items-start gap-4">
+                      <div className="bg-gray-100 p-4 rounded-xl">
+                        <BadgeCheck className="w-8 h-8 text-gray-500" />
+                      </div>
+
+                      <div>
+                        <h5 className="font-extrabold text-gray-600">100% Clean Frontend Work</h5>
+                        <p className="mt-2 text-sm leading-6 text-gray-600">
+                          No messy code. I build pixel-perfect UI with React/Next.js + Tailwind/MUI and make sure everything stays responsive and smooth.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 3 */}
+                  <div>
+                    <div className="flex items-start gap-4">
+                      <div className="bg-gray-100 p-4 rounded-xl">
+                        <Sparkles className="w-8 h-8 text-gray-500" />
+                      </div>
+
+                      <div>
+                        <h5 className="font-extrabold text-gray-600">Expert Guidance</h5>
+                        <p className="mt-2 text-sm leading-6 text-gray-600">
+                          Not sure what’s best for your product? I help you choose the right UI structure, reusable components, and scalable patterns for long-term growth.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex items-start gap-4">
+                      <div className="bg-gray-100 p-4 rounded-xl">
+                        <ShieldCheck className="w-8 h-8 text-gray-500" />
+                      </div>
+
+                      <div>
+                        <h5 className="font-extrabold text-gray-600">Reliable & Maintainable Code</h5>
+                        <p className="mt-2 text-sm leading-6 text-gray-600">
+                          I write clean, reusable components with proper structure so future updates are easy and your project stays stable as it grows.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
 
-            {/* Quick Contact Info */}
-            <div className="contact-quick-info">
-              {(contactInfo || []).map((info, index) => {
-                const IconComponent =
-                  (iconMap as Record<string, any>)[info.icon] || Mail;
-
-                return (
-                  <motion.a
-                    key={index}
-                    href={info.link || "#"}
-                    className="contact-quick-item flex items-center gap-2"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <IconComponent className="w-5 h-5" style={{ color: "var(--accent-blue)" }} />
-                    <span>{info.info}</span>
-                  </motion.a>
-                );
-              })}
+                <div className="mt-8 rounded-xl bg-emerald-50 px-5 py-4">
+                  <p className="text-sm leading-6 text-emerald-900">
+                    <span className="font-extrabold">Need immediate help?</span>{" "}
+                    Message me anytime — I can guide you quickly for UI, bugs, or improvements.
+                  </p>
+                </div>
+              </motion.div>
             </div>
-          </motion.div>
+          </div>
+
+
         </div>
       </div>
     </section>

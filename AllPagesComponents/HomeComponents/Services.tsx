@@ -22,6 +22,7 @@ import Link from "next/link";
 import type { ServicesProps, ServicesIconMap, ServicesPageContent } from "@/Utils/types";
 import { SERVICES_PAGE_CONTENT, SERVICES_LIST } from "@/Utils/data";
 import { parseHtmlContent } from "@/lib/html-parser";
+import { scrollToId } from "@/Utils/constant";
 
 const Services = ({ pageContent, services }: ServicesProps) => {
   const ref = useRef<HTMLElement | null>(null);
@@ -342,47 +343,49 @@ const Services = ({ pageContent, services }: ServicesProps) => {
             <div className="cta-description" dangerouslySetInnerHTML={{ __html: finalPageContent?.services_cta_description }} />
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href={finalPageContent?.get_stated_bttuon_link}>
-                <motion.button
-                  whileHover={{ scale: 1.05, y: -3, boxShadow: "0 10px 40px rgba(255, 255, 255, 0.3)" }}
-                  whileTap={{ scale: 0.95 }}
-                  animate={{
-                    boxShadow: [
-                      "0 4px 20px rgba(255, 255, 255, 0.1)",
-                      "0 8px 30px rgba(255, 255, 255, 0.2)",
-                      "0 4px 20px rgba(255, 255, 255, 0.1)",
-                    ],
-                  }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  className="button-primary group"
-                >
-                  <span>{finalPageContent?.get_stated_bttuon_text}</span>
-                  <motion.div animate={{ x: [0, 5, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
-                    <Rocket className="w-5 h-5" />
-                  </motion.div>
-                </motion.button>
-              </Link>
+              {/* <Link href={finalPageContent?.get_stated_bttuon_link}> */}
+              <motion.button
+                whileHover={{ scale: 1.05, y: -3, boxShadow: "0 10px 40px rgba(255, 255, 255, 0.3)" }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToId(finalPageContent.get_stated_bttuon_link)}
+                animate={{
+                  boxShadow: [
+                    "0 4px 20px rgba(255, 255, 255, 0.1)",
+                    "0 8px 30px rgba(255, 255, 255, 0.2)",
+                    "0 4px 20px rgba(255, 255, 255, 0.1)",
+                  ],
+                }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="button-primary group"
+              >
+                <span>{finalPageContent?.get_stated_bttuon_text}</span>
+                <motion.div animate={{ x: [0, 5, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
+                  <Rocket className="w-5 h-5" />
+                </motion.div>
+              </motion.button>
+              {/* </Link> */}
 
-              <Link href={finalPageContent?.view_portfolio_button_link}>
-                <motion.button
-                  whileHover={{ scale: 1.05, y: -3, backgroundColor: "rgba(255, 255, 255, 0.2)" }}
-                  whileTap={{ scale: 0.95 }}
-                  animate={{
-                    borderColor: [
-                      "rgba(255, 255, 255, 0.3)",
-                      "rgba(255, 255, 255, 0.6)",
-                      "rgba(255, 255, 255, 0.3)",
-                    ],
-                  }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  className="button-secondary"
-                >
-                  <span>{finalPageContent?.view_our_work_button_text}</span>
-                  <motion.div animate={{ x: [0, 5, 0] }} transition={{ duration: 2, repeat: Infinity }}>
-                    <Star className="w-5 h-5" />
-                  </motion.div>
-                </motion.button>
-              </Link>
+              {/* <Link href={finalPageContent?.view_portfolio_button_link}> */}
+              <motion.button
+                whileHover={{ scale: 1.05, y: -3, backgroundColor: "rgba(255, 255, 255, 0.2)" }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToId(finalPageContent.view_portfolio_button_link)}
+                animate={{
+                  borderColor: [
+                    "rgba(255, 255, 255, 0.3)",
+                    "rgba(255, 255, 255, 0.6)",
+                    "rgba(255, 255, 255, 0.3)",
+                  ],
+                }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="button-secondary"
+              >
+                <span>{finalPageContent?.view_our_work_button_text}</span>
+                <motion.div animate={{ x: [0, 5, 0] }} transition={{ duration: 2, repeat: Infinity }}>
+                  <Star className="w-5 h-5" />
+                </motion.div>
+              </motion.button>
+              {/* </Link> */}
             </div>
           </div>
         </motion.div>

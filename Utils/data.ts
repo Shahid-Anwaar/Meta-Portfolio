@@ -2,7 +2,7 @@ import { FooterMenu, FooterData, FooterContactInfoItem, TestimonialsPageContent,
 
 export const defaultHeaderData: HeaderData = {
   header_logo_link: '/',
-  header_logo_1: '/metalogix/logo-dark.png',
+  header_logo_1: '/images/11.png',
   header_logo_2: '/metalogix/logo-light.png',
   header_button_text: "Contact Me",
   header_button_link: 'contact',
@@ -85,7 +85,7 @@ export const defaultHeaderMenuItems: HeaderMenuGroup[] = [
       { title: 'Who I Help', menu_link: 'industries' },
       { title: 'Who I Am', menu_link: 'about' },
       { title: 'Projects', menu_link: 'projects' },
-      { title: 'Resume', menu_link: '/#resume' },
+      // { title: 'Resume', menu_link: '/#resume' },
     ],
   },
 ];
@@ -201,12 +201,42 @@ export const TESTIMONIALS_PAGE_CONTENT: TestimonialsPageContent = {
   `,
 };
 
+// export const TESTIMONIALS_DATA: TestimonialItem[] = [
+//   {
+//     name: "Sarah Khan",
+//     company: "TechNova",
+//     position: "Product Manager",
+//     image: "/images/testimonials/user1.jpg",
+//     rating: 5,
+//     text: `<p>Excellent communication and great quality. The UI was delivered fast and looked premium.</p>`,
+//     project: "Web App UI",
+//     duration: "3 weeks",
+//     industry: "SaaS",
+//     results: "Higher conversions & smoother UX",
+//     colorVariant: "purple",
+//   },
+//   {
+//     name: "Ali Raza",
+//     company: "ShopSphere",
+//     position: "Founder",
+//     image: "/images/testimonials/user2.jpg",
+//     rating: 5,
+//     text: `<p>Super professional and reliable. The performance improvements were noticeable immediately.</p>`,
+//     project: "Ecommerce Revamp",
+//     duration: "4 weeks",
+//     industry: "Ecommerce",
+//     results: "Faster pages & more sales",
+//     colorVariant: "blue",
+//   },
+// ];
+
 export const TESTIMONIALS_DATA: TestimonialItem[] = [
   {
     name: "Sarah Khan",
     company: "TechNova",
     position: "Product Manager",
-    image: "/images/testimonials/user1.jpg",
+    image:
+      "https://images.pexels.com/photos/30004322/pexels-photo-30004322.jpeg?cs=srgb&dl=pexels-prolificpeople-30004322.jpg&fm=jpg",
     rating: 5,
     text: `<p>Excellent communication and great quality. The UI was delivered fast and looked premium.</p>`,
     project: "Web App UI",
@@ -219,7 +249,8 @@ export const TESTIMONIALS_DATA: TestimonialItem[] = [
     name: "Ali Raza",
     company: "ShopSphere",
     position: "Founder",
-    image: "/images/testimonials/user2.jpg",
+    image:
+      "https://images.pexels.com/photos/15403161/pexels-photo-15403161.jpeg?cs=srgb&dl=pexels-manuel-guillen-vega-416968782-15403161.jpg&fm=jpg",
     rating: 5,
     text: `<p>Super professional and reliable. The performance improvements were noticeable immediately.</p>`,
     project: "Ecommerce Revamp",
@@ -228,7 +259,80 @@ export const TESTIMONIALS_DATA: TestimonialItem[] = [
     results: "Faster pages & more sales",
     colorVariant: "blue",
   },
+
+  // --- Added (client-style) ---
+  {
+    name: "Hassan Ahmed",
+    company: "MailHarbor",
+    position: "CTO",
+    image:
+      "https://images.pexels.com/photos/33363536/pexels-photo-33363536.jpeg?cs=srgb&dl=pexels-mindaugas-lazdauskas-2154678394-33363536.jpg&fm=jpg",
+    rating: 5,
+    text: `<p>Clean UI, fast delivery, and perfect API integration. The dashboard flows feel premium and smooth.</p>`,
+    project: "Client + Admin Dashboard UI",
+    duration: "6 weeks",
+    industry: "Email Infrastructure",
+    results: "Faster workflows & better usability",
+    colorVariant: "green",
+  },
+  {
+    name: "Ayesha Malik",
+    company: "ChargeLane",
+    position: "Operations Lead",
+    image:
+      "https://images.pexels.com/photos/19902720/pexels-photo-19902720.jpeg?cs=srgb&dl=pexels-ilkinefendiyev-19902720.jpg&fm=jpg",
+    rating: 5,
+    text: `<p>The admin portal became much easier to use. Tables, filters, and layouts are super clear and quick.</p>`,
+    project: "Admin Portal Revamp",
+    duration: "5 weeks",
+    industry: "EV / Mobility",
+    results: "Reduced support load & faster ops",
+    colorVariant: "orange",
+  },
+  {
+    name: "Usman Tariq",
+    company: "PlanSprint",
+    position: "Product Owner",
+    image:
+      "https://images.pexels.com/photos/10029842/pexels-photo-10029842.jpeg?cs=srgb&dl=pexels-rdne-10029842.jpg&fm=jpg",
+    rating: 5,
+    text: `<p>Very responsive and detail-focused. The admin panel UI is modern, consistent, and easy for our team.</p>`,
+    project: "Task Planner Admin Panel",
+    duration: "3 weeks",
+    industry: "Productivity",
+    results: "Cleaner management & smoother updates",
+    colorVariant: "pink",
+  },
+  // {
+  //   name: "Hira Naeem",
+  //   company: "WishGenie",
+  //   position: "Marketing Manager",
+  //   image:
+  //     "https://images.pexels.com/photos/31517991/pexels-photo-31517991.jpeg?cs=srgb&dl=pexels-yassine-benmoussa-1650792656-31517991.jpg&fm=jpg",
+  //   rating: 5,
+  //   text: `<p>UI looks polished and on-brand. The flow feels engaging and we saw better engagement on key screens.</p>`,
+  //   project: "Dashboard + Campaign UI",
+  //   duration: "3 weeks",
+  //   industry: "Consumer App",
+  //   results: "Higher engagement & better UI consistency",
+  //   colorVariant: "gray",
+  // },
+  // {
+  //   name: "Bilal Khan",
+  //   company: "DoneWorkspace",
+  //   position: "Project Manager",
+  //   image:
+  //     "https://images.pexels.com/photos/32064778/pexels-photo-32064778.jpeg?cs=srgb&dl=pexels-alpha-iliya-2149105184-32064778.jpg&fm=jpg",
+  //   rating: 5,
+  //   text: `<p>Great experience. The dashboard is responsive, fast, and the user journey is much more intuitive now.</p>`,
+  //   project: "Client Dashboard UI",
+  //   duration: "4 weeks",
+  //   industry: "Work Management",
+  //   results: "Better adoption & faster task handling",
+  //   colorVariant: "orange",
+  // },
 ];
+
 
 export const TECHNOLOGIES_PAGE_CONTENT: TechnologiesPageContent = {
   technology_badge: "Technologies",
@@ -244,19 +348,119 @@ export const TECHNOLOGIES_PAGE_CONTENT: TechnologiesPageContent = {
 
 export const TECH_STACK_DATA: TechStackData = {
   categories: [
-    { name: "All", icon: "Star" },
-    { name: "Frontend", icon: "Code" },
-    { name: "Backend", icon: "Settings" },
-    { name: "Mobile", icon: "Smartphone" },
-    { name: "Database", icon: "Database" },
-    { name: "Cloud", icon: "Cloud" },
+    // { name: "All", icon: "Star" },
+    // { name: "Frontend", icon: "Code" },
+    // { name: "Backend", icon: "Settings" },
+    // { name: "Mobile", icon: "Smartphone" },
+    // { name: "Database", icon: "Database" },
+    // { name: "Cloud", icon: "Cloud" },
   ],
+  // technologies: [
+  //   {
+  //     name: "React",
+  //     category: "Frontend",
+  //     icon: "Code",
+  //     logo: "/logos/react.svg",
+  //     colorVariant: "blue",
+  //     Performance: 92,
+  //   },
+  //   {
+  //     name: "Next.js",
+  //     category: "Frontend",
+  //     icon: "Layers",
+  //     logo: "/logos/nextjs.svg",
+  //     colorVariant: "purple",
+  //     Performance: 90,
+  //   },
+  //   {
+  //     name: "TypeScript",
+  //     category: "Frontend",
+  //     icon: "Code",
+  //     logo: "/logos/typescript.svg",
+  //     colorVariant: "blue",
+  //     Performance: 88,
+  //   },
+  //   {
+  //     name: "Node.js",
+  //     category: "Backend",
+  //     icon: "Settings",
+  //     logo: "/logos/node.svg",
+  //     colorVariant: "green",
+  //     Performance: 84,
+  //   },
+  //   {
+  //     name: "MongoDB",
+  //     category: "Database",
+  //     icon: "Database",
+  //     logo: "/logos/mongodb.svg",
+  //     colorVariant: "green",
+  //     Performance: 82,
+  //   },
+  //   {
+  //     name: "AWS / S3",
+  //     category: "Cloud",
+  //     icon: "Cloud",
+  //     logo: "/logos/aws.svg",
+  //     colorVariant: "orange",
+  //     Performance: 78,
+  //   },
+  // ],
+  // technologies: [
+  //   {
+  //     name: "React",
+  //     category: "Frontend",
+  //     icon: "Code",
+  //     logo: "logos:react",
+  //     colorVariant: "blue",
+  //     Performance: 92,
+  //   },
+  //   {
+  //     name: "Next.js",
+  //     category: "Frontend",
+  //     icon: "Layers",
+  //     logo: "logos:nextjs-icon",
+  //     colorVariant: "purple",
+  //     Performance: 90,
+  //   },
+  //   {
+  //     name: "TypeScript",
+  //     category: "Frontend",
+  //     icon: "Code",
+  //     logo: "logos:typescript-icon",
+  //     colorVariant: "blue",
+  //     Performance: 88,
+  //   },
+  //   {
+  //     name: "Node.js",
+  //     category: "Backend",
+  //     icon: "Settings",
+  //     logo: "logos:nodejs-icon",
+  //     colorVariant: "green",
+  //     Performance: 84,
+  //   },
+  //   {
+  //     name: "MongoDB",
+  //     category: "Database",
+  //     icon: "Database",
+  //     logo: "logos:mongodb-icon",
+  //     colorVariant: "green",
+  //     Performance: 82,
+  //   },
+  //   {
+  //     name: "AWS / S3",
+  //     category: "Cloud",
+  //     icon: "Cloud",
+  //     logo: "logos:aws",
+  //     colorVariant: "orange",
+  //     Performance: 78,
+  //   },
+  // ],
   technologies: [
     {
       name: "React",
       category: "Frontend",
       icon: "Code",
-      logo: "/logos/react.svg",
+      logo: "Atom",
       colorVariant: "blue",
       Performance: 92,
     },
@@ -264,7 +468,7 @@ export const TECH_STACK_DATA: TechStackData = {
       name: "Next.js",
       category: "Frontend",
       icon: "Layers",
-      logo: "/logos/nextjs.svg",
+      logo: "Layers",
       colorVariant: "purple",
       Performance: 90,
     },
@@ -272,7 +476,7 @@ export const TECH_STACK_DATA: TechStackData = {
       name: "TypeScript",
       category: "Frontend",
       icon: "Code",
-      logo: "/logos/typescript.svg",
+      logo: "Braces",
       colorVariant: "blue",
       Performance: 88,
     },
@@ -280,7 +484,7 @@ export const TECH_STACK_DATA: TechStackData = {
       name: "Node.js",
       category: "Backend",
       icon: "Settings",
-      logo: "/logos/node.svg",
+      logo: "Terminal",
       colorVariant: "green",
       Performance: 84,
     },
@@ -288,7 +492,7 @@ export const TECH_STACK_DATA: TechStackData = {
       name: "MongoDB",
       category: "Database",
       icon: "Database",
-      logo: "/logos/mongodb.svg",
+      logo: "Database",
       colorVariant: "green",
       Performance: 82,
     },
@@ -296,11 +500,13 @@ export const TECH_STACK_DATA: TechStackData = {
       name: "AWS / S3",
       category: "Cloud",
       icon: "Cloud",
-      logo: "/logos/aws.svg",
+      logo: "Cloud",
       colorVariant: "orange",
       Performance: 78,
     },
   ],
+
+
 };
 
 export const PORTFOLIO_PAGE_CONTENT: PortfolioPageContent = {
@@ -326,77 +532,270 @@ export const PORTFOLIO_PAGE_CONTENT: PortfolioPageContent = {
     </p>
   `,
 
-  portfolio_get_started_button_link: "#contact",
+  portfolio_get_started_button_link: "contact",
   portfolio_get_started_button_text: "Let’s Work Together",
 
-  view_portfolio_button_link: "#portfolio",
+  view_portfolio_button_link: "projects",
 
   portfolio_view_all_projects_button_text: "View All Projects",
 };
 
+// export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
+//   {
+//     title: "Admin Dashboard UI",
+//     slug: "admin-dashboard-ui",
+//     category: "Dashboard",
+//     description:
+//       "Responsive dashboard with tables, filters, charts-ready layout, and reusable components in React/Next.js.",
+//     image: "/portfolio/admin-dashboard.jpg",
+//     image_description: "Admin dashboard UI preview",
+//   },
+//   {
+//     title: "E-commerce Product Pages",
+//     slug: "ecommerce-product-pages",
+//     category: "E-commerce",
+//     description:
+//       "Product listing + detail UI with clean layout, mobile-first design, and smooth interactions using TailwindCSS.",
+//     image: "/portfolio/ecommerce.jpg",
+//     image_description: "E-commerce product page preview",
+//   },
+//   {
+//     title: "Landing Page (Modern UI)",
+//     slug: "landing-page-modern-ui",
+//     category: "Website",
+//     description:
+//       "High-converting landing page with animations, sections, and pixel-perfect responsive design using Next.js.",
+//     image: "/portfolio/landing.jpg",
+//     image_description: "Landing page preview",
+//   },
+//   {
+//     title: "Client Portal Screens",
+//     slug: "client-portal-screens",
+//     category: "Portal",
+//     description:
+//       "Secure looking portal UI with forms, navigation, and component structure, integrated with REST APIs.",
+//     image: "/portfolio/portal.jpg",
+//     image_description: "Client portal UI preview",
+//   },
+//   {
+//     title: "MUI + Tailwind UI System",
+//     slug: "mui-tailwind-ui-system",
+//     category: "UI System",
+//     description:
+//       "Reusable UI components using MUI + TailwindCSS, consistent spacing/typography and scalable structure.",
+//     image: "/portfolio/ui-system.jpg",
+//     image_description: "UI system preview",
+//   },
+//   {
+//     title: "API Integrated Frontend",
+//     slug: "api-integrated-frontend",
+//     category: "Integration",
+//     description:
+//       "Frontend screens connected with APIs (Auth/CRUD), loading states, error handling, and clean UX flow.",
+//     image: "/portfolio/api.jpg",
+//     image_description: "API integration screens preview",
+//   },
+// ];
+
+// ✅ Update your type to support multiple images
+
+
 export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
   {
-    title: "Admin Dashboard UI",
-    slug: "admin-dashboard-ui",
-    category: "Dashboard",
-    description:
-      "Responsive dashboard with tables, filters, charts-ready layout, and reusable components in React/Next.js.",
-    image: "/portfolio/admin-dashboard.jpg",
-    image_description: "Admin dashboard UI preview",
-  },
-  {
-    title: "E-commerce Product Pages",
-    slug: "ecommerce-product-pages",
-    category: "E-commerce",
-    description:
-      "Product listing + detail UI with clean layout, mobile-first design, and smooth interactions using TailwindCSS.",
-    image: "/portfolio/ecommerce.jpg",
-    image_description: "E-commerce product page preview",
-  },
-  {
-    title: "Landing Page (Modern UI)",
-    slug: "landing-page-modern-ui",
+    title: "MailCub — Marketing Website",
+    slug: "mailcub-website",
     category: "Website",
     description:
-      "High-converting landing page with animations, sections, and pixel-perfect responsive design using Next.js.",
-    image: "/portfolio/landing.jpg",
-    image_description: "Landing page preview",
+      "Modern responsive website UI for an email infrastructure product with clean sections and strong layout using React/Next.js + Tailwind.",
+    images: [
+      { src: "/images/p3_1.png", alt: "MailCub website hero section" },
+      { src: "/images/p3_2.png", alt: "MailCub website features section" },
+      { src: "/images/p3_3.png", alt: "MailCub website pricing/cta section" },
+      { src: "/images/p3_4.png", alt: "MailCub website hero section" },
+      { src: "/images/p3_5.png", alt: "MailCub website features section" },
+      { src: "/images/p3_6.png", alt: "MailCub website pricing/cta section" },
+      { src: "/images/p3_7.png", alt: "MailCub website pricing/cta section" }
+    ],
+    link: "https://mailcub.com/",
   },
   {
-    title: "Client Portal Screens",
-    slug: "client-portal-screens",
-    category: "Portal",
+    title: "MailCub — Client Portal",
+    slug: "mailcub-client-portal",
+    category: "Client Portal",
     description:
-      "Secure looking portal UI with forms, navigation, and component structure, integrated with REST APIs.",
-    image: "/portfolio/portal.jpg",
-    image_description: "Client portal UI preview",
+      "Client-side portal built with TypeScript, API-integrated screens, and responsive UI patterns for real user workflows.",
+    images: [
+      { src: "/images/p2_1.png", alt: "MailCub website hero section" },
+      { src: "/images/p2_2.png", alt: "MailCub website features section" },
+      { src: "/images/p2_3.png", alt: "MailCub website pricing/cta section" },
+      { src: "/images/p2_4.png", alt: "MailCub website hero section" },
+      { src: "/images/p2_5.png", alt: "MailCub website features section" },
+      { src: "/images/p2_6.png", alt: "MailCub website pricing/cta section" },
+      { src: "/images/p2_7.png", alt: "MailCub website pricing/cta section" },
+    ],
+    link: "https://client.mailcub.com/",
   },
   {
-    title: "MUI + Tailwind UI System",
-    slug: "mui-tailwind-ui-system",
-    category: "UI System",
+    title: "MailCub — Admin Panel",
+    slug: "mailcub-admin-panel",
+    category: "Admin Dashboard",
     description:
-      "Reusable UI components using MUI + TailwindCSS, consistent spacing/typography and scalable structure.",
-    image: "/portfolio/ui-system.jpg",
-    image_description: "UI system preview",
+      "Admin dashboard for operational workflows with tables, filters, status badges, modals, and clean UX with API integration.",
+    images: [
+      { src: "/images/p1_1.png", alt: "MailCub website hero section" },
+      { src: "/images/p1_2.png", alt: "MailCub website features section" },
+      { src: "/images/p1_3.png", alt: "MailCub website pricing/cta section" },
+      { src: "/images/p1_4.png", alt: "MailCub website hero section" },
+      { src: "/images/p1_5.png", alt: "MailCub website features section" },
+      { src: "/images/p1_6.png", alt: "MailCub website pricing/cta section" },
+      { src: "/images/p1_7.png", alt: "MailCub website pricing/cta section" },
+      { src: "/images/p1_8.png", alt: "MailCub website hero section" },
+      { src: "/images/p1_9.png", alt: "MailCub website features section" },
+    ],
+    link: "https://admin.mailcub.com/",
   },
   {
-    title: "API Integrated Frontend",
-    slug: "api-integrated-frontend",
-    category: "Integration",
+    title: "ConnectVolt — Admin Dashboard",
+    slug: "connectvolt-admin-dashboard",
+    category: "Dashboard",
     description:
-      "Frontend screens connected with APIs (Auth/CRUD), loading states, error handling, and clean UX flow.",
-    image: "/portfolio/api.jpg",
-    image_description: "API integration screens preview",
+      "Operations-focused admin UI with reusable components, structured layout, and data-heavy screens (tables + filters).",
+    images: [
+      { src: "/images/p4_2.png", alt: "MailCub website features section" },
+      { src: "/images/p4_3.png", alt: "MailCub website pricing/cta section" },
+      { src: "/images/p4_4.png", alt: "MailCub website hero section" },
+      { src: "/images/p4_5.png", alt: "MailCub website features section" },
+      { src: "/images/p4_6.png", alt: "MailCub website pricing/cta section" },
+      { src: "/images/p4_7.png", alt: "MailCub website pricing/cta section" },
+      { src: "/images/p4_8.png", alt: "MailCub website hero section" },
+      { src: "/images/p4_9.png", alt: "MailCub website features section" },
+      { src: "/images/p4_10.png", alt: "MailCub website pricing/cta section" },
+    ],
+    link: "https://admin.connectvolt.com/",
+  },
+  {
+    title: "Tikk — Admin Panel",
+    slug: "tikk-admin-panel",
+    category: "Admin Dashboard",
+    description:
+      "Admin panel UI with clean forms, reusable components, and API-ready flows for managing product operations.",
+    images: [
+      { src: "/images/p5_1.png", alt: "MailCub website hero section" },
+      { src: "/images/p5_2.png", alt: "MailCub website features section" },
+      { src: "/images/p5_3.png", alt: "MailCub website pricing/cta section" },
+      { src: "/images/p5_4.png", alt: "MailCub website hero section" },
+      { src: "/images/p5_5.png", alt: "MailCub website features section" },
+      { src: "/images/p5_6.png", alt: "MailCub website pricing/cta section" },
+      { src: "/images/p5_7.png", alt: "MailCub website pricing/cta section" },
+      { src: "/images/p5_8.png", alt: "MailCub website hero section" },
+    ],
+    link: "https://admintikk.devflips.com/login",
+  },
+  {
+    title: "WishGenie — Admin Panel",
+    slug: "wishgenie-admin-panel",
+    category: "Admin Dashboard",
+    description:
+      "Admin UI for managing content/operations with consistent layouts, reusable components, and smooth UX patterns.",
+    images: [
+      { src: "/images/p6_1.png", alt: "MailCub website hero section" },
+      { src: "/images/p6_2.png", alt: "MailCub website features section" },
+      { src: "/images/p6_3.png", alt: "MailCub website pricing/cta section" },
+      { src: "/images/p6_4.png", alt: "MailCub website hero section" },
+      { src: "/images/p6_5.png", alt: "MailCub website features section" },
+      { src: "/images/p6_6.png", alt: "MailCub website pricing/cta section" },
+      { src: "/images/p6_7.png", alt: "MailCub website pricing/cta section" },
+      { src: "/images/p6_8.png", alt: "MailCub website hero section" }
+    ],
+    link: "https://adminwishgenie.devflips.com/login",
+  },
+  // {
+  //   title: "E-Service Hub — Admin Portal",
+  //   slug: "eservice-hub-admin",
+  //   category: "Admin Portal",
+  //   description:
+  //     "Admin portal with login flow, structured navigation, and scalable UI screens designed for future API integrations.",
+  //   images: [
+  //     { src: "/portfolio/eservice/admin-1.jpg", alt: "E-Service Hub login" },
+  //     { src: "/portfolio/eservice/admin-2.jpg", alt: "E-Service Hub dashboard" },
+  //   ],
+  //   link: "http://46.101.67.112:1300/login",
+  // },
+  {
+    title: "DONE Workspace — Client Dashboard",
+    slug: "doneworkspace-client-dashboard",
+    category: "Client Portal",
+    description:
+      "Client dashboard UI with responsive design, clean UX flow, and API-connected views for real user journeys.",
+    images: [
+      { src: "/images/p7_1.png", alt: "MailCub website hero section" },
+      { src: "/images/p7_2.png", alt: "MailCub website features section" },
+      { src: "/images/p7_3.png", alt: "MailCub website pricing/cta section" },
+      { src: "/images/p7_4.png", alt: "MailCub website hero section" },
+      { src: "/images/p7_5.png", alt: "MailCub website features section" },
+      { src: "/images/p7_6.png", alt: "MailCub website pricing/cta section" },
+      { src: "/images/p7_7.png", alt: "MailCub website pricing/cta section" },
+      { src: "/images/p7_8.png", alt: "MailCub website hero section" },
+      { src: "/images/p7_9.png", alt: "MailCub website features section" },
+      { src: "/images/p7_10.png", alt: "MailCub website pricing/cta section" },
+      { src: "/images/p7_11.png", alt: "MailCub website pricing/cta section" },
+    ],
+    link: "https://client.doneworkspace.com/dashboard",
+  },
+  {
+    title: "DynamicLogix — Company Website",
+    slug: "dynamiclogix-website",
+    category: "Website",
+    description:
+      "Professional marketing website with modern sections, responsive layout, and clean typography/spacing.",
+    images: [
+      { src: "/images/p8_1.png", alt: "MailCub website hero section" },
+      { src: "/images/p8_2.png", alt: "MailCub website features section" },
+      { src: "/images/p8_3.png", alt: "MailCub website pricing/cta section" },
+      { src: "/images/p8_4.png", alt: "MailCub website hero section" },
+      { src: "/images/p8_5.png", alt: "MailCub website features section" },
+      { src: "/images/p8_6.png", alt: "MailCub website pricing/cta section" },
+      { src: "/images/p8_7.png", alt: "MailCub website pricing/cta section" }
+    ],
+    link: "https://dynamiclogix.com/",
+  },
+  // {
+  //   title: "Devflips — Company Website",
+  //   slug: "devflips-website",
+  //   category: "Website",
+  //   description:
+  //     "Conversion-friendly website UI with modern layout, responsive sections, and a scalable component structure.",
+  //   images: [
+  //     { src: "/portfolio/devflips/site-1.jpg", alt: "Devflips homepage" },
+  //     { src: "/portfolio/devflips/site-2.jpg", alt: "Devflips sections preview" },
+  //   ],
+  //   link: "https://devflips.com/",
+  // },
+  {
+    title: "Websites Admin Portal (DynamicLogix + Devflips)",
+    slug: "websites-admin-portal",
+    category: "Admin Portal",
+    description:
+      "Single admin portal to manage multiple marketing websites from one place—structured UI, forms, and scalable screens.",
+    images: [
+      { src: "/images/p9_1.png", alt: "MailCub website hero section" },
+      { src: "/images/p9_2.png", alt: "MailCub website features section" },
+      { src: "/images/p9_3.png", alt: "MailCub website pricing/cta section" },
+      { src: "/images/p9_4.png", alt: "MailCub website hero section" },
+      { src: "/images/p9_5.png", alt: "MailCub website features section" },
+      { src: "/images/p9_6.png", alt: "MailCub website pricing/cta section" },
+      { src: "/images/p9_7.png", alt: "MailCub website pricing/cta section" },
+      { src: "/images/p9_8.png", alt: "MailCub website hero section" }
+    ],
+    link: "https://websitesadmindev.metalogixtech.com/login",
   },
 ];
-
 
 export const HERO_PAGE_CONTENT: HeroPageContent = {
   get_stated_bttuon_link: "contact",
   get_stated_bttuon_text: "Let’s Work Together",
 
-  view_portfolio_button_link: "#projects",
+  view_portfolio_button_link: "projects",
   viw_portfolio_button: "View Projects",
 
   hero_badge: "Frontend Developer • React | Next.js | TypeScript",
@@ -560,7 +959,7 @@ export const SERVICES_PAGE_CONTENT: ServicesPageContent = {
   `,
   get_stated_bttuon_link: "contact",
   get_stated_bttuon_text: "Let’s Work Together",
-  view_portfolio_button_link: "#projects",
+  view_portfolio_button_link: "projects",
   view_our_work_button_text: "View My Work",
 };
 
@@ -644,7 +1043,7 @@ export const INDUSTRIES_PAGE_CONTENT: IndustriesPageContent = {
     </p>
   `,
 
-  contact_button_link: "#contact",
+  contact_button_link: "contact",
   contact_button_text: "Contact Me",
 };
 

@@ -196,14 +196,18 @@ export interface PortfolioPageContent {
   portfolio_view_all_projects_button_text: string;
 }
 
+export type PortfolioProjectImage = {
+  src: string;
+  alt: string;
+};
+
 export interface PortfolioProject {
   title: string;
   slug: string;
   category: string;
   description: string;
-
-  image: string; // relative path (will be used with s3baseUrl + image)
-  image_description: string;
+  images: PortfolioProjectImage[];
+  link: string;
 }
 
 export interface PortfolioProps {

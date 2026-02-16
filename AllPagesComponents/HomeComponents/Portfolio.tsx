@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 import {
   ExternalLink,
   Eye,
@@ -21,6 +21,7 @@ import Link from "next/link";
 // import { s3baseUrl } from "@/config/config";
 import type { PortfolioProps, PortfolioPageContent } from "@/Utils/types";
 import { PORTFOLIO_PAGE_CONTENT, PORTFOLIO_PROJECTS } from "@/Utils/data";
+import { scrollToId } from "@/Utils/constant";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -34,16 +35,60 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
   const ref = useRef<HTMLElement | null>(null);
   const isInView = useInView(ref, { once: true });
 
+
   // ✅ safe defaults (static)
   const finalPageContent: PortfolioPageContent = {
     ...PORTFOLIO_PAGE_CONTENT,
     ...(pageContent ?? {}),
   };
 
+  type Img = { src: string; alt: string };
+
+  const CardImageSlider = ({ images, title }: { images: Img[]; title: string }) => {
+    const [i, setI] = useState(0);
+
+    useEffect(() => {
+      if (!images?.length || images.length <= 1) return;
+      const t = window.setInterval(() => setI((p) => (p + 1) % images.length), 7000);
+      return () => window.clearInterval(t);
+    }, [images?.length]);
+
+    const current = images[i];
+    return (
+      <div className="relative w-full h-full">
+        <AnimatePresence mode="wait">
+          <motion.a
+            key={current?.src || "fallback-link"}
+            href={current?.src || "/portfolio/placeholder.jpg"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute inset-0 z-20 block"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.img
+              src={current?.src || "/portfolio/placeholder.jpg"}
+              alt={current?.alt || title}
+              className="portfolio-image w-full h-full cursor-pointer"
+              initial={{ opacity: 0, scale: 1.02 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.5 }}
+              whileHover={{ scale: 1.1 }}
+            />
+          </motion.a>
+        </AnimatePresence>
+      </div>
+    );
+
+  };
+
+
   const finalPortfolioData = portfolioData?.length ? portfolioData : PORTFOLIO_PROJECTS;
 
   return (
-    <section ref={ref} id="projects" className="relative  bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden">
+    <section ref={ref} id="projects" className="relative  bg-linear-to-br from-gray-50 via-white to-gray-100 overflow-hidden">
       {/* Always Animated Background Elements */}
       <div className="absolute inset-0">
         <motion.div
@@ -120,7 +165,7 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
 
         {/* Enhanced Portfolio Grid */}
         <motion.div variants={containerVariants} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {finalPortfolioData.slice(0, 6).map((project, index) => (
+          {finalPortfolioData.map((project, index) => (
             <motion.div
               key={project.title}
               whileHover={{ scale: 1.03, y: -10, rotateY: 3 }}
@@ -146,45 +191,40 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
               ))}
 
               <div className="portfolio-card-inner relative z-10">
+
+
                 {/* Project Image */}
                 <div className="portfolio-image-container portfolio-image-wrapper">
-                  <motion.img
+                  <CardImageSlider images={project.images} title={project.title} />
+                  {/* <motion.img
                     src={project.image}
                     alt={project.image_description}
                     className="portfolio-image"
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.6 }}
-                  />
+                  /> */}
 
-                  <div className="portfolio-image-overlay" />
+                  {/* <div className="portfolio-image-overlay" /> */}
 
                   <motion.div
                     animate={{ opacity: [0.3, 0.6, 0.3], backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"] }}
                     transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-                    className="portfolio-animated-overlay"
+                    className="portfolio-animated-overlay pointer-events-none z-0"
                   />
 
                   <motion.div
                     animate={{ scale: [1, 1.05, 1], opacity: [0.9, 1, 0.9] }}
                     transition={{ duration: 3, repeat: Infinity, delay: index * 0.2 }}
-                    className="portfolio-category-badge"
+                    className="portfolio-category-badge pointer-events-none z-20"
                   >
-                    <span className="px-3 py-1 bg-gradient-to-r from-purple-500 to-indigo-500 text-white text-xs font-semibold rounded-full shadow-lg">
+                    <span className=" px-3 py-1 bg-linear-to-r from-purple-500 to-indigo-500 text-white text-xs font-semibold rounded-full shadow-lg">
                       {project.category}
                     </span>
                   </motion.div>
 
-                  <div className="portfolio-title-wrapper">
-                    <motion.h5
-                      animate={{ y: [0, -2, 0], opacity: [0.9, 1, 0.9] }}
-                      transition={{ duration: 4, repeat: Infinity, delay: index * 0.1 }}
-                      className="portfolio-title"
-                    >
-                      {project.title}
-                    </motion.h5>
-                  </div>
 
-                  <Link href={`/portfolio/${project?.slug}`} className="portfolio-view-overlay">
+
+                  {/* <Link href={`/portfolio/${project?.slug}`} className="portfolio-view-overlay">
                     <motion.div initial={{ opacity: 0, scale: 0.8 }} whileHover={{ opacity: 1, scale: 1 }} className="portfolio-view-container">
                       <motion.div
                         whileHover={{ scale: 1.2, rotate: 360 }}
@@ -194,11 +234,20 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
                         <Eye className="w-6 h-6 text-white" />
                       </motion.div>
                     </motion.div>
-                  </Link>
+                  </Link> */}
                 </div>
 
                 {/* Content */}
                 <div className="portfolio-content">
+                  <div className="portfolio-title-wrappe">
+                    <motion.h5
+                      animate={{ y: [0, -2, 0], opacity: [0.9, 1, 0.9] }}
+                      transition={{ duration: 4, repeat: Infinity, delay: index * 0.1 }}
+                      className="portfolio-title"
+                    >
+                      {project.title}
+                    </motion.h5>
+                  </div>
                   <div className="portfolio-content-main">
                     <motion.p
                       animate={{ opacity: [0.8, 1, 0.8] }}
@@ -210,13 +259,13 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
                   </div>
 
                   <div className="portfolio-actions flex items-center justify-between pt-4 border-t border-gray-100">
-                    <Link href={`/portfolio/${project?.slug}`}>
+                    <Link href={project?.link} target="_blank" rel="noopener noreferrer">
                       <motion.button
                         whileHover={{ scale: 1.05, x: 5 }}
                         whileTap={{ scale: 0.95 }}
                         animate={{ x: [0, 2, 0], opacity: [0.8, 1, 0.8] }}
                         transition={{ duration: 3, repeat: Infinity, delay: index * 0.1 }}
-                        className="flex items-center space-x-2 text-purple-600 font-semibold hover:text-purple-700 transition-colors group"
+                        className="flex items-center cursor-pointer space-x-2 text-purple-600 font-semibold hover:text-purple-700 transition-colors group"
                       >
                         <span>View Details</span>
                         <motion.div animate={{ x: [0, 3, 0] }} transition={{ duration: 2, repeat: Infinity }}>
@@ -230,7 +279,7 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
                 <motion.div
                   animate={{ scaleX: [0, 1, 0.8, 1], opacity: [0.5, 1, 0.7, 1] }}
                   transition={{ duration: 4, repeat: Infinity, delay: index * 0.2 }}
-                  className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-indigo-500 origin-left"
+                  className="absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-purple-500 to-indigo-500 origin-left"
                 />
 
                 <motion.div
@@ -247,12 +296,12 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
         <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="relative bg-gradient-to-r from-slate-800 via-gray-800 to-slate-900 rounded-3xl p-12 text-center overflow-hidden"
+          className="relative bg-linear-to-r from-slate-800 via-gray-800 to-slate-900 rounded-3xl p-12 text-center overflow-hidden"
         >
           <motion.div
             animate={{ backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"], opacity: [0.1, 0.3, 0.1] }}
             transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10"
+            className="absolute inset-0 bg-linear-to-r from-white/10 via-transparent to-white/10"
             style={{ backgroundSize: "200% 200%" }}
           />
 
@@ -291,55 +340,57 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
             />
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href={finalPageContent.portfolio_get_started_button_link}>
-                <motion.button
-                  whileHover={{ scale: 1.05, y: -3, boxShadow: "0 10px 40px rgba(255, 255, 255, 0.3)" }}
-                  whileTap={{ scale: 0.95 }}
-                  animate={{
-                    boxShadow: [
-                      "0 4px 15px rgba(59, 130, 246, 0.3)",
-                      "0 8px 25px rgba(147, 51, 234, 0.4)",
-                      "0 4px 15px rgba(59, 130, 246, 0.3)",
-                    ],
-                  }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold px-8 py-4 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 flex items-center space-x-3 group"
-                >
-                  <span>{finalPageContent.portfolio_get_started_button_text}</span>
-                  <motion.div animate={{ x: [0, 5, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
-                    <Rocket className="w-5 h-5" />
-                  </motion.div>
-                </motion.button>
-              </Link>
+              {/* <Link href={finalPageContent.portfolio_get_started_button_link}> */}
+              <motion.button
+                whileHover={{ scale: 1.05, y: -3, boxShadow: "0 10px 40px rgba(255, 255, 255, 0.3)" }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToId(finalPageContent.portfolio_get_started_button_link)}
+                animate={{
+                  boxShadow: [
+                    "0 4px 15px rgba(59, 130, 246, 0.3)",
+                    "0 8px 25px rgba(147, 51, 234, 0.4)",
+                    "0 4px 15px rgba(59, 130, 246, 0.3)",
+                  ],
+                }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="bg-linear-to-r from-blue-500 to-purple-600 text-white font-semibold px-8 py-4 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 flex items-center space-x-3 group"
+              >
+                <span>{finalPageContent.portfolio_get_started_button_text}</span>
+                <motion.div animate={{ x: [0, 5, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
+                  <Rocket className="w-5 h-5" />
+                </motion.div>
+              </motion.button>
+              {/* </Link> */}
 
-              <Link href={finalPageContent.view_portfolio_button_link}>
-                <motion.button
-                  whileHover={{ scale: 1.05, y: -3, backgroundColor: "rgba(255, 255, 255, 0.2)" }}
-                  whileTap={{ scale: 0.95 }}
-                  animate={{
-                    borderColor: [
-                      "rgba(255, 255, 255, 0.3)",
-                      "rgba(255, 255, 255, 0.6)",
-                      "rgba(255, 255, 255, 0.3)",
-                    ],
-                  }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  className="border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/10 transition-colors duration-300 flex items-center space-x-3"
+              {/* <Link href={finalPageContent.view_portfolio_button_link}> */}
+              <motion.button
+                whileHover={{ scale: 1.05, y: -3, backgroundColor: "rgba(255, 255, 255, 0.2)" }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToId(finalPageContent.view_portfolio_button_link)}
+                animate={{
+                  borderColor: [
+                    "rgba(255, 255, 255, 0.3)",
+                    "rgba(255, 255, 255, 0.6)",
+                    "rgba(255, 255, 255, 0.3)",
+                  ],
+                }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/10 transition-colors duration-300 flex items-center space-x-3"
+              >
+                <span>{finalPageContent.portfolio_view_all_projects_button_text}</span>
+                <motion.div
+                  animate={{ rotate: [0, 360], scale: [1, 1.1, 1] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
                 >
-                  <span>{finalPageContent.portfolio_view_all_projects_button_text}</span>
-                  <motion.div
-                    animate={{ rotate: [0, 360], scale: [1, 1.1, 1] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                  >
-                    <Star className="w-5 h-5" />
-                  </motion.div>
-                </motion.button>
-              </Link>
+                  <Star className="w-5 h-5" />
+                </motion.div>
+              </motion.button>
+              {/* </Link> */}
             </div>
           </div>
         </motion.div>
       </div>
-    </section>
+    </section >
   );
 };
 
