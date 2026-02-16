@@ -844,7 +844,7 @@ export const HERO_SERVICES: HeroService[] = [
     id: 3,
     icon: "Cloud",
     title: "API Integration",
-    description: "Auth, CRUD, real-time updates",
+    description: "Auth, CRUD, Fast API-driven updates",
     progress: "85%",
     delay: 1.6,
     iconClass: "bg-green-600",
@@ -859,7 +859,7 @@ export const HERO_STATS: HeroStat[] = [
     color: "from-blue-400 to-blue-600",
   },
   {
-    number: "1.5+",
+    number: "1+",
     label: "Years Experience",
     color: "from-purple-400 to-purple-600",
   },
