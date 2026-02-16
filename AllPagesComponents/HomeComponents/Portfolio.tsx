@@ -215,9 +215,9 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
                   <motion.div
                     animate={{ scale: [1, 1.05, 1], opacity: [0.9, 1, 0.9] }}
                     transition={{ duration: 3, repeat: Infinity, delay: index * 0.2 }}
-                    className="portfolio-category-badge pointer-events-none z-0"
+                    className="portfolio-category-badge pointer-events-none z-20"
                   >
-                    <span className="px-3 py-1 bg-linear-to-r from-purple-500 to-indigo-500 text-white text-xs font-semibold rounded-full shadow-lg">
+                    <span className=" px-3 py-1 bg-linear-to-r from-purple-500 to-indigo-500 text-white text-xs font-semibold rounded-full shadow-lg">
                       {project.category}
                     </span>
                   </motion.div>
@@ -265,7 +265,7 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
                         whileTap={{ scale: 0.95 }}
                         animate={{ x: [0, 2, 0], opacity: [0.8, 1, 0.8] }}
                         transition={{ duration: 3, repeat: Infinity, delay: index * 0.1 }}
-                        className="flex items-center space-x-2 text-purple-600 font-semibold hover:text-purple-700 transition-colors group"
+                        className="flex items-center cursor-pointer space-x-2 text-purple-600 font-semibold hover:text-purple-700 transition-colors group"
                       >
                         <span>View Details</span>
                         <motion.div animate={{ x: [0, 3, 0] }} transition={{ duration: 2, repeat: Infinity }}>

@@ -85,7 +85,7 @@ export const defaultHeaderMenuItems: HeaderMenuGroup[] = [
       { title: 'Who I Help', menu_link: 'industries' },
       { title: 'Who I Am', menu_link: 'about' },
       { title: 'Projects', menu_link: 'projects' },
-      { title: 'Resume', menu_link: '/#resume' },
+      // { title: 'Resume', menu_link: '/#resume' },
     ],
   },
 ];
