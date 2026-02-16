@@ -25,7 +25,7 @@ const Header: React.FC<HeaderProps> = ({ menuItems = [], data }) => {
   const [isLoading] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll);
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
@@ -83,7 +83,9 @@ const Header: React.FC<HeaderProps> = ({ menuItems = [], data }) => {
   const headerLogoLink = data?.header_logo_link ?? '/';
   const headerLogoScrolled = (data?.header_logo_1 ?? '');
   const headerLogoTop = (data?.header_logo_2 ?? '');
-
+ 
+  console.log(headerLogoScrolled, headerLogoTop, "tttttttttttt");
+  
   return (
     <motion.header
       initial={{ y: -100 }}
@@ -101,10 +103,10 @@ const Header: React.FC<HeaderProps> = ({ menuItems = [], data }) => {
           >
             <Link href={headerLogoLink} className="flex items-center space-x-2">
               <Image
-                src={isScrolled ? headerLogoScrolled : headerLogoTop}
+                src={"/images/11.png"}
                 alt="Metalogix"
-                width={160}
-                height={160}
+                width={70}
+                height={70}
               />
             </Link>
           </motion.div>

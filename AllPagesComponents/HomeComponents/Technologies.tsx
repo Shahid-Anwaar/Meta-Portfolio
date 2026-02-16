@@ -14,6 +14,10 @@ import {
   Globe,
   Star,
   Sparkles,
+  Atom,
+  Braces,
+  Terminal,
+  LucideIcon,
 } from "lucide-react";
 
 import type {
@@ -22,6 +26,17 @@ import type {
   TechnologiesPageContent,
 } from "@/Utils/types";
 import { TECH_STACK_DATA, TECHNOLOGIES_PAGE_CONTENT } from "@/Utils/data";
+
+const LUCIDE_LOGOS: Record<string, LucideIcon> = {
+  Atom,
+  Layers,
+  Braces,
+  Terminal,
+  Database,
+  Cloud,
+};
+
+const getLogoIcon = (name: string): LucideIcon => LUCIDE_LOGOS[name] ?? Code;
 
 const TechnologiesSection = ({ techStack, pageContent }: TechnologiesSectionProps) => {
   const ref = useRef<HTMLElement | null>(null);
@@ -179,9 +194,8 @@ const TechnologiesSection = ({ techStack, pageContent }: TechnologiesSectionProp
               onClick={() => setActiveCategory(category.name)}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className={`technologies-category-btn ${
-                activeCategory === category.name ? "technologies-category-active" : ""
-              }`}
+              className={`technologies-category-btn ${activeCategory === category.name ? "technologies-category-active" : ""
+                }`}
             >
               <motion.div
                 animate={{ rotate: [0, 360] }}
@@ -240,12 +254,29 @@ const TechnologiesSection = ({ techStack, pageContent }: TechnologiesSectionProp
                       className="technologies-card-icon-ring"
                     />
 
-                    <motion.div
+                    {/* <motion.div
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       transition={{ duration: 0.3 }}
                       className="technologies-card-icon-inner"
                     >
                       <img src={tech.logo} alt={tech.name} className="technologies-card-logo-img" />
+
+                      <motion.div
+                        animate={{ scale: [0.8, 1.2, 0.8], opacity: [0.3, 0.6, 0.3] }}
+                        transition={{ duration: 3, repeat: Infinity, delay: index * 0.1 }}
+                        className="technologies-card-glow"
+                      />
+                    </motion.div> */}
+
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ duration: 0.3 }}
+                      className="technologies-card-icon-inner"
+                    >
+                      {(() => {
+                        const LogoIcon = getLogoIcon(String(tech.logo));
+                        return <LogoIcon aria-label={tech.name} className="technologies-card-logo-img" />;
+                      })()}
 
                       <motion.div
                         animate={{ scale: [0.8, 1.2, 0.8], opacity: [0.3, 0.6, 0.3] }}

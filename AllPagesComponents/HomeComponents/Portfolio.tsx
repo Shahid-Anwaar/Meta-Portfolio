@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 import {
   ExternalLink,
   Eye,
@@ -34,11 +34,55 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
   const ref = useRef<HTMLElement | null>(null);
   const isInView = useInView(ref, { once: true });
 
+
   // ✅ safe defaults (static)
   const finalPageContent: PortfolioPageContent = {
     ...PORTFOLIO_PAGE_CONTENT,
     ...(pageContent ?? {}),
   };
+
+  type Img = { src: string; alt: string };
+
+  const CardImageSlider = ({ images, title }: { images: Img[]; title: string }) => {
+    const [i, setI] = useState(0);
+
+    useEffect(() => {
+      if (!images?.length || images.length <= 1) return;
+      const t = window.setInterval(() => setI((p) => (p + 1) % images.length), 7000);
+      return () => window.clearInterval(t);
+    }, [images?.length]);
+
+    const current = images[i];
+    return (
+      <div className="relative w-full h-full">
+        <AnimatePresence mode="wait">
+          <motion.a
+            key={current?.src || "fallback-link"}
+            href={current?.src || "/portfolio/placeholder.jpg"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute inset-0 z-20 block"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.img
+              src={current?.src || "/portfolio/placeholder.jpg"}
+              alt={current?.alt || title}
+              className="portfolio-image w-full h-full cursor-pointer"
+              initial={{ opacity: 0, scale: 1.02 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.5 }}
+              whileHover={{ scale: 1.1 }}
+            />
+          </motion.a>
+        </AnimatePresence>
+      </div>
+    );
+
+  };
+
 
   const finalPortfolioData = portfolioData?.length ? portfolioData : PORTFOLIO_PROJECTS;
 
@@ -120,7 +164,7 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
 
         {/* Enhanced Portfolio Grid */}
         <motion.div variants={containerVariants} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {finalPortfolioData.slice(0, 6).map((project, index) => (
+          {finalPortfolioData.map((project, index) => (
             <motion.div
               key={project.title}
               whileHover={{ scale: 1.03, y: -10, rotateY: 3 }}
@@ -146,45 +190,40 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
               ))}
 
               <div className="portfolio-card-inner relative z-10">
+
+
                 {/* Project Image */}
                 <div className="portfolio-image-container portfolio-image-wrapper">
-                  <motion.img
+                  <CardImageSlider images={project.images} title={project.title} />
+                  {/* <motion.img
                     src={project.image}
                     alt={project.image_description}
                     className="portfolio-image"
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.6 }}
-                  />
+                  /> */}
 
-                  <div className="portfolio-image-overlay" />
+                  {/* <div className="portfolio-image-overlay" /> */}
 
                   <motion.div
                     animate={{ opacity: [0.3, 0.6, 0.3], backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"] }}
                     transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-                    className="portfolio-animated-overlay"
+                    className="portfolio-animated-overlay pointer-events-none z-0"
                   />
 
                   <motion.div
                     animate={{ scale: [1, 1.05, 1], opacity: [0.9, 1, 0.9] }}
                     transition={{ duration: 3, repeat: Infinity, delay: index * 0.2 }}
-                    className="portfolio-category-badge"
+                    className="portfolio-category-badge pointer-events-none z-0"
                   >
                     <span className="px-3 py-1 bg-linear-to-r from-purple-500 to-indigo-500 text-white text-xs font-semibold rounded-full shadow-lg">
                       {project.category}
                     </span>
                   </motion.div>
 
-                  <div className="portfolio-title-wrapper">
-                    <motion.h5
-                      animate={{ y: [0, -2, 0], opacity: [0.9, 1, 0.9] }}
-                      transition={{ duration: 4, repeat: Infinity, delay: index * 0.1 }}
-                      className="portfolio-title"
-                    >
-                      {project.title}
-                    </motion.h5>
-                  </div>
 
-                  <Link href={`/portfolio/${project?.slug}`} className="portfolio-view-overlay">
+
+                  {/* <Link href={`/portfolio/${project?.slug}`} className="portfolio-view-overlay">
                     <motion.div initial={{ opacity: 0, scale: 0.8 }} whileHover={{ opacity: 1, scale: 1 }} className="portfolio-view-container">
                       <motion.div
                         whileHover={{ scale: 1.2, rotate: 360 }}
@@ -194,11 +233,20 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
                         <Eye className="w-6 h-6 text-white" />
                       </motion.div>
                     </motion.div>
-                  </Link>
+                  </Link> */}
                 </div>
 
                 {/* Content */}
                 <div className="portfolio-content">
+                  <div className="portfolio-title-wrappe">
+                    <motion.h5
+                      animate={{ y: [0, -2, 0], opacity: [0.9, 1, 0.9] }}
+                      transition={{ duration: 4, repeat: Infinity, delay: index * 0.1 }}
+                      className="portfolio-title"
+                    >
+                      {project.title}
+                    </motion.h5>
+                  </div>
                   <div className="portfolio-content-main">
                     <motion.p
                       animate={{ opacity: [0.8, 1, 0.8] }}
@@ -210,7 +258,7 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
                   </div>
 
                   <div className="portfolio-actions flex items-center justify-between pt-4 border-t border-gray-100">
-                    <Link href={`/portfolio/${project?.slug}`}>
+                    <Link href={project?.link} target="_blank" rel="noopener noreferrer">
                       <motion.button
                         whileHover={{ scale: 1.05, x: 5 }}
                         whileTap={{ scale: 0.95 }}
@@ -339,7 +387,7 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
           </div>
         </motion.div>
       </div>
-    </section>
+    </section >
   );
 };
 
