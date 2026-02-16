@@ -21,6 +21,7 @@ import Link from "next/link";
 // import { s3baseUrl } from "@/config/config";
 import type { PortfolioProps, PortfolioPageContent } from "@/Utils/types";
 import { PORTFOLIO_PAGE_CONTENT, PORTFOLIO_PROJECTS } from "@/Utils/data";
+import { scrollToId } from "@/Utils/constant";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -339,50 +340,52 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
             />
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href={finalPageContent.portfolio_get_started_button_link}>
-                <motion.button
-                  whileHover={{ scale: 1.05, y: -3, boxShadow: "0 10px 40px rgba(255, 255, 255, 0.3)" }}
-                  whileTap={{ scale: 0.95 }}
-                  animate={{
-                    boxShadow: [
-                      "0 4px 15px rgba(59, 130, 246, 0.3)",
-                      "0 8px 25px rgba(147, 51, 234, 0.4)",
-                      "0 4px 15px rgba(59, 130, 246, 0.3)",
-                    ],
-                  }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  className="bg-linear-to-r from-blue-500 to-purple-600 text-white font-semibold px-8 py-4 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 flex items-center space-x-3 group"
-                >
-                  <span>{finalPageContent.portfolio_get_started_button_text}</span>
-                  <motion.div animate={{ x: [0, 5, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
-                    <Rocket className="w-5 h-5" />
-                  </motion.div>
-                </motion.button>
-              </Link>
+              {/* <Link href={finalPageContent.portfolio_get_started_button_link}> */}
+              <motion.button
+                whileHover={{ scale: 1.05, y: -3, boxShadow: "0 10px 40px rgba(255, 255, 255, 0.3)" }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToId(finalPageContent.portfolio_get_started_button_link)}
+                animate={{
+                  boxShadow: [
+                    "0 4px 15px rgba(59, 130, 246, 0.3)",
+                    "0 8px 25px rgba(147, 51, 234, 0.4)",
+                    "0 4px 15px rgba(59, 130, 246, 0.3)",
+                  ],
+                }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="bg-linear-to-r from-blue-500 to-purple-600 text-white font-semibold px-8 py-4 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 flex items-center space-x-3 group"
+              >
+                <span>{finalPageContent.portfolio_get_started_button_text}</span>
+                <motion.div animate={{ x: [0, 5, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
+                  <Rocket className="w-5 h-5" />
+                </motion.div>
+              </motion.button>
+              {/* </Link> */}
 
-              <Link href={finalPageContent.view_portfolio_button_link}>
-                <motion.button
-                  whileHover={{ scale: 1.05, y: -3, backgroundColor: "rgba(255, 255, 255, 0.2)" }}
-                  whileTap={{ scale: 0.95 }}
-                  animate={{
-                    borderColor: [
-                      "rgba(255, 255, 255, 0.3)",
-                      "rgba(255, 255, 255, 0.6)",
-                      "rgba(255, 255, 255, 0.3)",
-                    ],
-                  }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  className="border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/10 transition-colors duration-300 flex items-center space-x-3"
+              {/* <Link href={finalPageContent.view_portfolio_button_link}> */}
+              <motion.button
+                whileHover={{ scale: 1.05, y: -3, backgroundColor: "rgba(255, 255, 255, 0.2)" }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToId(finalPageContent.view_portfolio_button_link)}
+                animate={{
+                  borderColor: [
+                    "rgba(255, 255, 255, 0.3)",
+                    "rgba(255, 255, 255, 0.6)",
+                    "rgba(255, 255, 255, 0.3)",
+                  ],
+                }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/10 transition-colors duration-300 flex items-center space-x-3"
+              >
+                <span>{finalPageContent.portfolio_view_all_projects_button_text}</span>
+                <motion.div
+                  animate={{ rotate: [0, 360], scale: [1, 1.1, 1] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
                 >
-                  <span>{finalPageContent.portfolio_view_all_projects_button_text}</span>
-                  <motion.div
-                    animate={{ rotate: [0, 360], scale: [1, 1.1, 1] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                  >
-                    <Star className="w-5 h-5" />
-                  </motion.div>
-                </motion.button>
-              </Link>
+                  <Star className="w-5 h-5" />
+                </motion.div>
+              </motion.button>
+              {/* </Link> */}
             </div>
           </div>
         </motion.div>

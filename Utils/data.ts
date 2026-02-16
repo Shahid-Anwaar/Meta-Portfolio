@@ -532,10 +532,10 @@ export const PORTFOLIO_PAGE_CONTENT: PortfolioPageContent = {
     </p>
   `,
 
-  portfolio_get_started_button_link: "#contact",
+  portfolio_get_started_button_link: "contact",
   portfolio_get_started_button_text: "Let’s Work Together",
 
-  view_portfolio_button_link: "#portfolio",
+  view_portfolio_button_link: "projects",
 
   portfolio_view_all_projects_button_text: "View All Projects",
 };
@@ -795,7 +795,7 @@ export const HERO_PAGE_CONTENT: HeroPageContent = {
   get_stated_bttuon_link: "contact",
   get_stated_bttuon_text: "Let’s Work Together",
 
-  view_portfolio_button_link: "#projects",
+  view_portfolio_button_link: "projects",
   viw_portfolio_button: "View Projects",
 
   hero_badge: "Frontend Developer • React | Next.js | TypeScript",
@@ -959,7 +959,7 @@ export const SERVICES_PAGE_CONTENT: ServicesPageContent = {
   `,
   get_stated_bttuon_link: "contact",
   get_stated_bttuon_text: "Let’s Work Together",
-  view_portfolio_button_link: "#projects",
+  view_portfolio_button_link: "projects",
   view_our_work_button_text: "View My Work",
 };
 
@@ -1043,7 +1043,7 @@ export const INDUSTRIES_PAGE_CONTENT: IndustriesPageContent = {
     </p>
   `,
 
-  contact_button_link: "#contact",
+  contact_button_link: "contact",
   contact_button_text: "Contact Me",
 };
 

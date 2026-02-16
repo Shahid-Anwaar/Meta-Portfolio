@@ -21,8 +21,9 @@ import {
   Target,
 } from "lucide-react";
 import Link from "next/link";
- import type { IndustriesProps, IndustryIconMap, IndustriesPageContent } from "@/Utils/types";
+import type { IndustriesProps, IndustryIconMap, IndustriesPageContent } from "@/Utils/types";
 import { INDUSTRIES_LIST, INDUSTRIES_PAGE_CONTENT } from "@/Utils/data";
+import { scrollToId } from "@/Utils/constant";
 
 const Industries = ({ pageContent, industriesData }: IndustriesProps) => {
   const ref = useRef<HTMLElement | null>(null);
@@ -302,26 +303,27 @@ const Industries = ({ pageContent, industriesData }: IndustriesProps) => {
             />
 
             <div className="industries-cta-buttons">
-              <Link href={finalPageContent.contact_button_link || "#contact"}>
-                <motion.button
-                  whileHover={{ scale: 1.05, y: -3, boxShadow: "0 10px 40px rgba(59, 130, 246, 0.4)" }}
-                  whileTap={{ scale: 0.95 }}
-                  animate={{
-                    boxShadow: [
-                      "0 4px 20px rgba(59, 130, 246, 0.2)",
-                      "0 8px 30px rgba(59, 130, 246, 0.4)",
-                      "0 4px 20px rgba(59, 130, 246, 0.2)",
-                    ],
-                  }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  className="button-primary group"
-                >
-                  <span>{finalPageContent.contact_button_text || "Contact Me"}</span>
-                  <motion.div animate={{ x: [0, 5, 0] }} transition={{ duration: 2, repeat: Infinity }}>
-                    <ArrowRight className="industries-cta-button-icon group-hover:translate-x-1 transition-transform" />
-                  </motion.div>
-                </motion.button>
-              </Link>
+              {/* <Link href={finalPageContent.contact_button_link || "#contact"}> */}
+              <motion.button
+                whileHover={{ scale: 1.05, y: -3, boxShadow: "0 10px 40px rgba(59, 130, 246, 0.4)" }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToId(finalPageContent.contact_button_link)}
+                animate={{
+                  boxShadow: [
+                    "0 4px 20px rgba(59, 130, 246, 0.2)",
+                    "0 8px 30px rgba(59, 130, 246, 0.4)",
+                    "0 4px 20px rgba(59, 130, 246, 0.2)",
+                  ],
+                }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="button-primary group"
+              >
+                <span>{finalPageContent.contact_button_text || "Contact Me"}</span>
+                <motion.div animate={{ x: [0, 5, 0] }} transition={{ duration: 2, repeat: Infinity }}>
+                  <ArrowRight className="industries-cta-button-icon group-hover:translate-x-1 transition-transform" />
+                </motion.div>
+              </motion.button>
+              {/* </Link> */}
             </div>
           </div>
         </motion.div>

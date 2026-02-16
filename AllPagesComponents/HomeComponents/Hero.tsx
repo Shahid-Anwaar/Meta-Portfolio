@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import { HERO_PAGE_CONTENT, HERO_SERVICES, HERO_STATS } from "@/Utils/data";
 import type { HeroProps, HeroIconMap, HeroPageContent } from "@/Utils/types";
+import { scrollToId } from "@/Utils/constant";
 
 const Hero = ({ pageContent, heroServices, heroStats }: HeroProps) => {
     // ✅ Merge incoming content with defaults (UI unchanged)
@@ -15,13 +16,6 @@ const Hero = ({ pageContent, heroServices, heroStats }: HeroProps) => {
 
     const finalHeroServices = heroServices?.length ? heroServices : HERO_SERVICES;
     const finalHeroStats = heroStats?.length ? heroStats : HERO_STATS;
-
-    const scrollToContact = () => {
-        const element = document.getElementById(finalPageContent.get_stated_bttuon_link);
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-        }
-    };
 
     // Icon mapping for hero services
     const iconMap: HeroIconMap = {
@@ -252,7 +246,7 @@ const Hero = ({ pageContent, heroServices, heroStats }: HeroProps) => {
                                 <motion.button
                                     whileHover={{ scale: 1.05, y: -3, boxShadow: "0 10px 40px rgba(59, 130, 246, 0.4)" }}
                                     whileTap={{ scale: 0.95 }}
-                                    onClick={scrollToContact}
+                                    onClick={() => scrollToId(finalPageContent.get_stated_bttuon_link)}
                                     className="relative button-primary w-full sm:w-auto overflow-hidden group"
                                 >
                                     <span className="relative z-10 flex items-center justify-center space-x-3">
@@ -264,20 +258,21 @@ const Hero = ({ pageContent, heroServices, heroStats }: HeroProps) => {
                                     <motion.div className="absolute inset-0 bg-linear-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity" whileHover={{ scale: 1.1 }} />
                                 </motion.button>
 
-                                <Link href={finalPageContent?.view_portfolio_button_link}>
-                                    <motion.button
-                                        whileHover={{ scale: 1.05, y: -3, backgroundColor: "rgba(255, 255, 255, 0.15)" }}
-                                        whileTap={{ scale: 0.95 }}
-                                        className="button-secondary w-full sm:w-auto relative group"
-                                    >
-                                        <span className="flex items-center justify-center space-x-3">
-                                            <span>{finalPageContent.viw_portfolio_button}</span>
-                                            <motion.div animate={{ x: [0, 5, 0] }} transition={{ duration: 2, repeat: Infinity }}>
-                                                <Sparkles className="w-5 h-5" />
-                                            </motion.div>
-                                        </span>
-                                    </motion.button>
-                                </Link>
+                                {/* <Link href={finalPageContent?.view_portfolio_button_link}> */}
+                                <motion.button
+                                    whileHover={{ scale: 1.05, y: -3, backgroundColor: "rgba(255, 255, 255, 0.15)" }}
+                                    whileTap={{ scale: 0.95 }}
+                                    onClick={() => scrollToId(finalPageContent.view_portfolio_button_link)}
+                                    className="button-secondary w-full sm:w-auto relative group"
+                                >
+                                    <span className="flex items-center justify-center space-x-3">
+                                        <span>{finalPageContent.viw_portfolio_button}</span>
+                                        <motion.div animate={{ x: [0, 5, 0] }} transition={{ duration: 2, repeat: Infinity }}>
+                                            <Sparkles className="w-5 h-5" />
+                                        </motion.div>
+                                    </span>
+                                </motion.button>
+                                {/* </Link> */}
                             </motion.div>
 
                             {/* Stats */}
