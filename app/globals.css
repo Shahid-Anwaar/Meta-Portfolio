@@ -9153,6 +9153,7 @@ h5 {
 
 .contact-form-input:focus+.contact-input-focus-line {
   width: 100%;
+  display: none;
   padding: 10px;
 }
 

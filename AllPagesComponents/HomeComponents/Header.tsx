@@ -67,8 +67,8 @@ const Header: React.FC<HeaderProps> = ({ menuItems = [], data }) => {
 
           {/* Desktop Navigation */}
           <nav className="hidden xl:flex items-center space-x-6 2xl:space-x-8">
-            {currentMenus.map((menu) => (
-              <button onClick={() => scrollToSection(menu.menu_link)}
+            {currentMenus.map((menu, i) => (
+              <button key={i} onClick={() => scrollToSection(menu.menu_link)}
                 className={`flex items-center space-x-1 font-medium transition-colors ${isScrolled ? 'text-gray-700 hover:text-[#040364]' : 'text-white hover:text-[#EEAD0E]'
                   }`}
               >
@@ -104,8 +104,9 @@ const Header: React.FC<HeaderProps> = ({ menuItems = [], data }) => {
               <div className="flex-1 overflow-y-auto px-4 sm:px-6 lg:px-8 pt-1 pb-6 bg-white">
                 {/* Mobile What I Do */}
                 <div className="space-y-0 mb-3">
-                  {currentMenus.map((menu) => (
+                  {currentMenus.map((menu, i) => (
                     <button
+                      key={i}
                       type="button"
                       onClick={() => scrollToSection(menu.menu_link)}
                       className="flex items-center justify-between w-full px-2 py-2 text-gray-700 hover:text-[#040364] font-medium text-sm sm:text-base rounded-lg hover:bg-gray-50 transition-colors"
