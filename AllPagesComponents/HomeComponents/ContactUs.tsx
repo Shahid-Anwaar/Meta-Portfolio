@@ -4,7 +4,12 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send, CheckCircle2, Clock, BadgeCheck, Sparkles, ShieldCheck } from "lucide-react";
 import React, { useCallback, useMemo, useState } from "react";
-// import { useSnackbar } from "notistack";
+import emailjs from "@emailjs/browser";
+
+const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+import { useSnackbar } from "notistack";
 
 type ContactInfoItem = {
   icon: "Mail" | "MapPin" | "Phone" | "Send" | string;
@@ -55,6 +60,7 @@ const normalizePhone = (value: string) =>
     .trim();
 
 const Contact = ({ pageContent, contactUs, contactInfo }: ContactProps) => {
+  const { enqueueSnackbar } = useSnackbar();
   //   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
   //   const { enqueueSnackbar } = useSnackbar();
 
@@ -86,71 +92,163 @@ const Contact = ({ pageContent, contactUs, contactInfo }: ContactProps) => {
     const message = (formData.message || "").trim();
 
     if (!name) {
-      //   enqueueSnackbar("Name is required", { variant: "error" });
+      enqueueSnackbar("Name is required", { variant: "error" });
       return false;
     }
     if (!email) {
-      //   enqueueSnackbar("Email is required", { variant: "error" });
+      enqueueSnackbar("Email is required", { variant: "error" });
       return false;
     }
     if (!emailRegex.test(email)) {
-      //   enqueueSnackbar("Please enter a valid email address.", { variant: "error" });
+      enqueueSnackbar("Please enter a valid email address.", { variant: "error" });
       return false;
     }
     if (!phone) {
-      //   enqueueSnackbar("Mobile number is required", { variant: "error" });
+      enqueueSnackbar("Mobile number is required", { variant: "error" });
       return false;
     }
 
     // Minimum digits check (ignoring + and spaces)
     const digits = phone.replace(/[^\d]/g, "");
     if (digits.length < 7) {
-      //   enqueueSnackbar("Mobile number is too short.", { variant: "error" });
+      enqueueSnackbar("Mobile number is too short.", { variant: "error" });
       return false;
     }
 
     if (!message) {
-      //   enqueueSnackbar("Message is required", { variant: "error" });
+      enqueueSnackbar("Message is required", { variant: "error" });
       return false;
     }
 
     return true;
-  }, [formData]);
+  }, [formData, enqueueSnackbar]);
+
+  // const handleSubmit = useCallback(
+  //   async (e: React.FormEvent<HTMLFormElement>) => {
+  //     e.preventDefault();
+  //     if (isSubmitting) return;
+
+  //     if (!validate()) return;
+
+  //     setIsSubmitting(true);
+
+  //     try {
+  //       const data = {
+  //         website: "Portfolio Website",
+  //         form_type: "ask_a_question",
+  //         name: formData.name.trim(),
+  //         email: formData.email.trim(),
+  //         mobile: normalizePhone(formData.phone),
+  //         message: formData.message.trim(),
+  //       };
+
+  //       // const resp: any = await send_application_form_email(data);
+
+  //       // if (resp?.code === 200) {
+  //       //   enqueueSnackbar(resp?.message || "Message sent successfully", { variant: "success" });
+  //       //   setIsSubmitted(true);
+  //       //   setFormData({ name: "", email: "", phone: "", message: "" });
+  //       // } else {
+  //       //   enqueueSnackbar(resp?.message || "Something went wrong", { variant: "error" });
+  //       // }
+  //     } catch (err: any) {
+  //       // enqueueSnackbar(err?.message || "Network error. Please try again.", { variant: "error" });
+  //     } finally {
+  //       setIsSubmitting(false);
+  //     }
+  //   },
+  //   [formData, isSubmitting, validate]
+  // );
+
+  // const handleSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   if (isSubmitting) return;
+  //   if (!validate()) return;
+
+  //   setIsSubmitting(true);
+
+  //   try {
+  //     const data = {
+  //       website: "Portfolio Website",
+  //       form_type: "ask_a_question",
+  //       name: formData.name.trim(),
+  //       email: formData.email.trim(),
+  //       mobile: normalizePhone(formData.phone),
+  //       message: formData.message.trim(),
+  //     };
+
+  //     const text =
+  //       `New Form Submission\n\n` +
+  //       `Website: ${data.website}\n` +
+  //       `Type: ${data.form_type}\n` +
+  //       `Name: ${data.name}\n` +
+  //       `Email: ${data.email}\n` +
+  //       `Mobile: ${data.mobile}\n\n` +
+  //       `Message:\n${data.message}`;
+
+  //     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+
+  //     // open whatsapp (new tab)
+  //     window.open(url, "_blank", "noopener,noreferrer");
+
+  //     // (optional) clear form / show toast
+  //     // setIsSubmitted(true);
+  //     // setFormData({ name: "", email: "", phone: "", message: "" });
+  //   } finally {
+  //     setIsSubmitting(false);
+  //   }
+  // }, [formData, isSubmitting, validate]);
+
+
+  console.log(serviceId, templateId, publicKey, "uuuuuuuuuuuiiiiiiiiii");
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      if (isSubmitting) return;
 
+      if (!serviceId || !templateId || !publicKey) {
+        enqueueSnackbar("Email service is not configured properly.", { variant: "error" });
+        return;
+      }
+
+      if (isSubmitting) return;
       if (!validate()) return;
 
       setIsSubmitting(true);
 
       try {
-        const data = new FormData();
-        data.append("website", "metalogixtech");
-        data.append("form_type", "ask_a_question");
-        data.append("name", formData.name.trim());
-        data.append("email", formData.email.trim());
-        data.append("mobile", normalizePhone(formData.phone));
-        data.append("message", formData.message.trim());
+        // Map your form -> EmailJS template variables
+        const templateParams = {
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          phone: normalizePhone(formData.phone),
+          message: formData.message.trim(),
+          time: new Date().toLocaleString(),
+        };
 
-        // const resp: any = await send_application_form_email(data);
+        console.log(serviceId, templateId, publicKey, templateParams, "uuuuuuuuuuu");
 
-        // if (resp?.code === 200) {
-        //   enqueueSnackbar(resp?.message || "Message sent successfully", { variant: "success" });
-        //   setIsSubmitted(true);
-        //   setFormData({ name: "", email: "", phone: "", message: "" });
-        // } else {
-        //   enqueueSnackbar(resp?.message || "Something went wrong", { variant: "error" });
-        // }
-      } catch (err: any) {
-        // enqueueSnackbar(err?.message || "Network error. Please try again.", { variant: "error" });
+
+        await emailjs.send(
+          serviceId || "",
+          templateId || "",
+          templateParams,
+          { publicKey: publicKey || "" }
+        );
+
+        enqueueSnackbar("Message sent successfully!", { variant: "success" });
+        setFormData({ name: "", email: "", phone: "", message: "" });
+        setIsSubmitted(true);
+      } catch (err) {
+        console.error(err);
+        enqueueSnackbar("Failed to send message. Please try again.", {
+          variant: "error",
+        });
       } finally {
         setIsSubmitting(false);
       }
     },
-    [formData, isSubmitting, validate]
+    [formData, isSubmitting, validate, enqueueSnackbar]
   );
 
   const handleChange = useCallback(
