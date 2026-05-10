@@ -4958,6 +4958,7 @@ h5 {
 
 .contact-input-focus-line {
   position: absolute;
+  display: none;
   bottom: 0;
   left: 0;
   right: 0;
