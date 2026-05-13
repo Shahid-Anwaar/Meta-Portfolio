@@ -8,11 +8,11 @@ import Portfolio from "@/AllPagesComponents/HomeComponents/Portfolio";
 import Services from "@/AllPagesComponents/HomeComponents/Services";
 import TechnologiesSection from "@/AllPagesComponents/HomeComponents/Technologies";
 import TestimonialsSection from "@/AllPagesComponents/HomeComponents/Testmonials";
-import { ABOUT_PAGE_CONTENT, ABOUT_US, contactInfo, contactUs, defaultHeaderData, defaultHeaderMenuItems, footerContactInfo, footerData, footerMenuItems, HERO_PAGE_CONTENT, HERO_SERVICES, HERO_STATS, INDUSTRIES_LIST, INDUSTRIES_PAGE_CONTENT, PORTFOLIO_PAGE_CONTENT, PORTFOLIO_PROJECTS, SERVICES_LIST, SERVICES_PAGE_CONTENT, TECH_STACK_DATA, TECHNOLOGIES_PAGE_CONTENT, TESTIMONIALS_DATA, TESTIMONIALS_PAGE_CONTENT } from "@/Utils/data";
+import { ABOUT_PAGE_CONTENT, ABOUT_US, contactUs, defaultHeaderData, defaultHeaderMenuItems, footerContactInfo, footerData, footerMenuItems, HERO_PAGE_CONTENT, HERO_SERVICES, HERO_STATS, INDUSTRIES_LIST, INDUSTRIES_PAGE_CONTENT, PORTFOLIO_PAGE_CONTENT, PORTFOLIO_PROJECTS, SERVICES_LIST, SERVICES_PAGE_CONTENT, TECH_STACK_DATA, TECHNOLOGIES_PAGE_CONTENT, TESTIMONIALS_DATA, TESTIMONIALS_PAGE_CONTENT } from "@/Utils/data";
 
 export default function Home() {
   return (
-    <div className="min-h-screen  bg-zinc-50 font-sans dark:bg-black">
+    <div className="min-h-screen bg-zinc-50 font-sans dark:bg-black">
       <Header menuItems={defaultHeaderMenuItems} data={defaultHeaderData} />
       <Hero pageContent={HERO_PAGE_CONTENT} heroServices={HERO_SERVICES} heroStats={HERO_STATS} />
       <About pageContent={ABOUT_PAGE_CONTENT} aboutUs={ABOUT_US} />
