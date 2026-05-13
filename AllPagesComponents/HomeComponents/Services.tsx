@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import {
   Code,
@@ -18,7 +18,6 @@ import {
   Globe,
   Monitor,
 } from "lucide-react";
-import Link from "next/link";
 import type { ServicesProps, ServicesIconMap, ServicesPageContent } from "@/Utils/types";
 import { SERVICES_PAGE_CONTENT, SERVICES_LIST } from "@/Utils/data";
 import { parseHtmlContent } from "@/lib/html-parser";
@@ -109,7 +108,7 @@ const Services = ({ pageContent, services }: ServicesProps) => {
           />
 
           {/* Always Animated Tech Icons */}
-          <motion.div className="flex justify-center items-center space-x-6 mt-12">
+          <motion.div className="flex justify-center items-center space-x-6 mt-12" aria-hidden="true">
             {[Code, Smartphone, Monitor, Cloud, Globe].map((Icon, index) => (
               <motion.div
                 key={index}

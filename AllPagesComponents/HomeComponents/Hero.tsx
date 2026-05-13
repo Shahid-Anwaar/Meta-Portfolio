@@ -1,7 +1,6 @@
 "use client";
-import { ArrowRight, Sparkles, Code, Smartphone, Globe, Cloud } from "lucide-react";
+import { ArrowRight, Sparkles, Code, Smartphone, Globe } from "lucide-react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 
 import { HERO_PAGE_CONTENT, HERO_SERVICES, HERO_STATS } from "@/Utils/data";
 import type { HeroProps, HeroIconMap, HeroPageContent } from "@/Utils/types";
@@ -39,7 +38,7 @@ const Hero = ({ pageContent, heroServices, heroStats }: HeroProps) => {
                 </div>
 
                 {/* Modern Geometric Background Animation */}
-                <div className="absolute inset-0 overflow-hidden">
+                <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
                     {/* Animated Grid Lines */}
                     <motion.div
                         className="absolute inset-0 opacity-10 hero-animated-grid"

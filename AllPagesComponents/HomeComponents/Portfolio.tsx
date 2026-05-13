@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useInView } from "framer-motion";
 import {
   ExternalLink,
-  Eye,
   Star,
   Sparkles,
   Code,
@@ -81,16 +80,14 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
         </AnimatePresence>
       </div>
     );
-
   };
-
 
   const finalPortfolioData = portfolioData?.length ? portfolioData : PORTFOLIO_PROJECTS;
 
   return (
     <section ref={ref} id="projects" className="relative  bg-linear-to-br from-gray-50 via-white to-gray-100 overflow-hidden">
       {/* Always Animated Background Elements */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0" aria-hidden="true">
         <motion.div
           animate={{ scale: [1, 1.3, 1], rotate: [0, 180, 360], opacity: [0.02, 0.08, 0.02] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -196,15 +193,6 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
                 {/* Project Image */}
                 <div className="portfolio-image-container portfolio-image-wrapper">
                   <CardImageSlider images={project.images} title={project.title} />
-                  {/* <motion.img
-                    src={project.image}
-                    alt={project.image_description}
-                    className="portfolio-image"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.6 }}
-                  /> */}
-
-                  {/* <div className="portfolio-image-overlay" /> */}
 
                   <motion.div
                     animate={{ opacity: [0.3, 0.6, 0.3], backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"] }}
@@ -221,20 +209,6 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
                       {project.category}
                     </span>
                   </motion.div>
-
-
-
-                  {/* <Link href={`/portfolio/${project?.slug}`} className="portfolio-view-overlay">
-                    <motion.div initial={{ opacity: 0, scale: 0.8 }} whileHover={{ opacity: 1, scale: 1 }} className="portfolio-view-container">
-                      <motion.div
-                        whileHover={{ scale: 1.2, rotate: 360 }}
-                        transition={{ duration: 0.6 }}
-                        className="portfolio-view-button"
-                      >
-                        <Eye className="w-6 h-6 text-white" />
-                      </motion.div>
-                    </motion.div>
-                  </Link> */}
                 </div>
 
                 {/* Content */}

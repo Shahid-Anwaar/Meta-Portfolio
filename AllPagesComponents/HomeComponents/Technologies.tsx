@@ -100,8 +100,8 @@ const TechnologiesSection = ({ techStack, pageContent }: TechnologiesSectionProp
 
   return (
     <section ref={ref} id="technologies" className="technologies-section">
-      {/* Always Animated Background Elements */}
-      <div className="technologies-bg-elements">
+      {/* Always Animated Background Elements - Hidden on Mobile */}
+      <div className="technologies-bg-elements" aria-hidden="true">
         <motion.div
           animate={{ scale: [1, 1.3, 1], rotate: [0, 180, 360], opacity: [0.02, 0.08, 0.02] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}

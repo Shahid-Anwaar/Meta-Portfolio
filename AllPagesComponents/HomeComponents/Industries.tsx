@@ -11,7 +11,6 @@ import {
   Truck,
   DollarSign,
   Film,
-  ArrowRight,
   Building,
   Zap,
   Star,
@@ -19,8 +18,8 @@ import {
   Globe,
   Users,
   Target,
+  ArrowRight,
 } from "lucide-react";
-import Link from "next/link";
 import type { IndustriesProps, IndustryIconMap, IndustriesPageContent } from "@/Utils/types";
 import { INDUSTRIES_LIST, INDUSTRIES_PAGE_CONTENT } from "@/Utils/data";
 import { scrollToId } from "@/Utils/constant";
@@ -71,7 +70,7 @@ const Industries = ({ pageContent, industriesData }: IndustriesProps) => {
   return (
     <section id="industries" ref={ref} className="industries-section">
       {/* Always Animated Background Elements */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0" aria-hidden="true">
         <motion.div
           animate={{ scale: [1, 1.3, 1], rotate: [0, 180, 360], opacity: [0.02, 0.08, 0.02] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}

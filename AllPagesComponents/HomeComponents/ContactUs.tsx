@@ -2,8 +2,8 @@
 
 // import { send_application_form_email } from "@/DAL";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, CheckCircle2, Clock, BadgeCheck, Sparkles, ShieldCheck } from "lucide-react";
-import React, { useCallback, useMemo, useState } from "react";
+import { Mail, Phone, Send, CheckCircle2, Clock, BadgeCheck, Sparkles, ShieldCheck } from "lucide-react";
+import React, { useCallback, useState } from "react";
 import emailjs from "@emailjs/browser";
 
 const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
@@ -11,11 +11,6 @@ const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
 const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 import { useSnackbar } from "notistack";
 
-type ContactInfoItem = {
-  icon: "Mail" | "MapPin" | "Phone" | "Send" | string;
-  info: string;
-  link?: string;
-};
 
 type ContactUsContent = {
   contact_us_badge?: string;
@@ -39,9 +34,7 @@ type ContactUsContent = {
 };
 
 type ContactProps = {
-  pageContent?: any; // not used here, kept for compatibility
   contactUs: ContactUsContent;
-  contactInfo?: ContactInfoItem[];
 };
 
 type FormState = {
@@ -59,7 +52,7 @@ const normalizePhone = (value: string) =>
     .replace(/\s+/g, " ")
     .trim();
 
-const Contact = ({ pageContent, contactUs, contactInfo }: ContactProps) => {
+const Contact = ({  contactUs }: ContactProps) => {
   const { enqueueSnackbar } = useSnackbar();
   //   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
   //   const { enqueueSnackbar } = useSnackbar();
@@ -74,16 +67,7 @@ const Contact = ({ pageContent, contactUs, contactInfo }: ContactProps) => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
-  // Icon mapping for contact info
-  const iconMap = useMemo(
-    () => ({
-      Mail,
-      MapPin,
-      Phone,
-      Send,
-    }),
-    []
-  );
+
 
   const validate = useCallback((): boolean => {
     const name = (formData.name || "").trim();
@@ -309,11 +293,7 @@ const Contact = ({ pageContent, contactUs, contactInfo }: ContactProps) => {
       </section>
     );
   }
-
-  const mapSrc =
-    contactUs?.map_iframe_src ||
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3394.123456789!2d73.10123456789!3d30.668123456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDQwJzA1LjIiTiA3M8KwMDYnMDQuNCJF!5e0!3m2!1sen!2spk!4v1692345678901!5m2!1sen!2spk";
-
+  
   return (
     <section id="contact" className="contact-section">
       {/* Modern Background Effects */}
