@@ -1,16 +1,214 @@
-import { FooterMenu, FooterData, FooterContactInfoItem, TestimonialsPageContent, TestimonialItem, TechnologiesPageContent, TechStackData, PortfolioPageContent, PortfolioProject, IndustriesPageContent, IndustryItem, AboutPageContent, AboutUsContent, ServicesPageContent, ServiceItem, HeroPageContent, HeroService, HeroStat, HeaderData, HeaderMenuGroup } from "./types";
+import { Metadata } from "next";
+import {
+  FooterMenu,
+  FooterData,
+  FooterContactInfoItem,
+  TestimonialsPageContent,
+  TestimonialItem,
+  TechnologiesPageContent,
+  TechStackData,
+  PortfolioPageContent,
+  PortfolioProject,
+  IndustriesPageContent,
+  IndustryItem,
+  AboutPageContent,
+  AboutUsContent,
+  ServicesPageContent,
+  ServiceItem,
+  HeroPageContent,
+  HeroService,
+  HeroStat,
+  HeaderData,
+  HeaderMenuGroup,
+} from "./types";
+
+const SITE_NAME = "Shahid Anwaar";
+const SITE_URL = "https://shahid-web-developer.netlify.app";
+const OG_IMAGE = "/images/16.png";
+
+export const defaultMetadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+
+  title: {
+    default: `${SITE_NAME} | React & Next.js Frontend Developer`,
+    template: `%s | ${SITE_NAME}`,
+  },
+
+  description:
+    "React & Next.js frontend developer building SaaS dashboards, client portals, admin panels, landing pages, and API-integrated web apps. Available for remote, freelance, and onsite work.",
+
+  keywords: [
+    "Shahid Anwaar",
+    "Shahid web developer",
+    "Shahid frontend developer",
+
+    "React developer",
+    "React.js developer",
+    "React frontend developer",
+    "Next.js developer",
+    "Next.js frontend developer",
+    "Frontend developer",
+    "Frontend engineer",
+    "TypeScript developer",
+    "JavaScript developer",
+    "Tailwind CSS developer",
+
+    "Remote React developer",
+    "Remote Next.js developer",
+    "Freelance frontend developer",
+    "Freelance React developer",
+    "Remote frontend developer",
+    "Frontend developer for hire",
+    "Frontend developer Pakistan",
+    "React developer Pakistan",
+    "Next.js developer Pakistan",
+
+    "SaaS dashboard developer",
+    "Admin dashboard developer",
+    "Admin panel developer",
+    "Client portal developer",
+    "Customer portal developer",
+    "Web portal developer",
+    "CRM dashboard developer",
+
+    "Responsive web developer",
+    "Landing page developer",
+    "Portfolio website developer",
+    "Website frontend developer",
+
+    "Figma to React",
+    "Figma to Next.js",
+    "Figma to Tailwind",
+    "Pixel perfect UI",
+    "UI developer",
+    "Frontend UI developer",
+    "UI/UX implementation",
+
+    "REST API integration",
+    "Frontend API integration",
+    "Authentication UI",
+    "Role based access UI",
+    "CRUD app developer",
+
+    "SEO friendly Next.js",
+    "Performance optimization",
+    "Core Web Vitals optimization",
+    "React component development",
+    "Reusable component library",
+    "Design system implementation",
+  ],
+
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+
+  other: {
+    publisher: SITE_NAME,
+  },
+
+  alternates: {
+    canonical: SITE_URL,
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    title: `${SITE_NAME} | React & Next.js Frontend Developer`,
+    description:
+      "Frontend developer building SaaS dashboards, client portals, admin panels, landing pages, responsive UI, and API-integrated web apps.",
+    siteName: SITE_NAME,
+    locale: "en_US",
+    images: [
+      {
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} - React & Next.js Frontend Developer Portfolio`,
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} | React & Next.js Frontend Developer`,
+    description:
+      "React & Next.js frontend developer available for remote, freelance, and onsite frontend work.",
+    images: [OG_IMAGE],
+  },
+
+  icons: {
+    icon: [{ url: "/images/11.png" }],
+    apple: [{ url: "/images/11.png" }],
+  },
+
+  category: "technology",
+
+  verification: {
+    google: "uUDVdwDVQMI4eKHqp8_p-6wCU1jjbR95jUNfAHv6BHA",
+  },
+};
+
+export const professionalServiceSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Shahid Anwaar - React & Next.js Frontend Developer",
+  url: SITE_URL,
+  description:
+    "Frontend developer building SaaS dashboards, client portals, admin panels, landing pages, and API-integrated web apps.",
+  areaServed: ["Worldwide", "Pakistan"],
+  serviceType: [
+    "React Development",
+    "Next.js Development",
+    "Frontend Development",
+    "TypeScript Frontend Development",
+    "Tailwind CSS Development",
+    "Responsive Website Development",
+    "Landing Page Development",
+    "SaaS Dashboard Development",
+    "Admin Dashboard Development",
+    "Admin Panel Development",
+    "Client Portal Development",
+    "Customer Portal Development",
+    "REST API Integration",
+    "Authentication UI Development",
+    "CRUD App Development",
+    "Figma to React Development",
+    "Figma to Next.js Development",
+    "Frontend Performance Optimization",
+    "React and Next.js Frontend Development",
+    "SaaS Dashboard Development",
+    "Admin Panel and Client Portal Development",
+    "Responsive Website and Landing Page Development",
+    "Figma to React and Next.js Conversion",
+    "REST API Integration",
+    "Authentication and CRUD UI Development",
+    "Tailwind CSS and TypeScript UI Development",
+    "Frontend Performance Optimization",
+  ],
+};
 
 export const defaultHeaderData: HeaderData = {
-  header_logo_link: '/',
-  header_logo_1: '/images/11.png',
-  header_logo_2: '/metalogix/logo-light.png',
+  header_logo_link: "/",
+  header_logo_1: "/images/11.png",
+  header_logo_2: "/metalogix/logo-light.png",
   header_button_text: "Contact Me",
-  header_button_link: 'contact',
+  header_button_link: "contact",
 };
 
 export const defaultHeaderMenuItems: HeaderMenuGroup[] = [
   {
-    title: 'metalogix-header', // keep key as-is (minimal)
+    title: "metalogix-header", // keep key as-is (minimal)
     menus: [
       // {
       //   title: 'What I Do',
@@ -81,10 +279,10 @@ export const defaultHeaderMenuItems: HeaderMenuGroup[] = [
       //     },
       //   ],
       // },
-      { title: 'What I Do', menu_link: 'services' },
-      { title: 'Who I Help', menu_link: 'industries' },
-      { title: 'Who I Am', menu_link: 'about' },
-      { title: 'Projects', menu_link: 'projects' },
+      { title: "What I Do", menu_link: "services" },
+      { title: "Who I Help", menu_link: "industries" },
+      { title: "Who I Am", menu_link: "about" },
+      { title: "Projects", menu_link: "projects" },
       // { title: 'Resume', menu_link: '/#resume' },
     ],
   },
@@ -144,7 +342,7 @@ export const footerData: FooterData = {
   footer_insta_icon_link: "https://instagram.com/",
   footer_linkedin_icon_link: "https://linkedin.com/",
 
-  copyright_text: "Shahid Anwaar. All rights reserved.",
+  copyright_text: "Shahid Anwaar - Web Developer. All rights reserved.",
 };
 
 export const footerContactInfo: FooterContactInfoItem[] = [
@@ -170,10 +368,14 @@ export const footerContactInfo: FooterContactInfoItem[] = [
 
 export const contactUs = {
   contact_us_badge: "Contact",
-  contact_us_detail: "<p>Tell me what you’re building — I’ll reply as soon as possible.</p>",
+  contact_us_detail:
+    ` <h2 class="section-title">
+    Let’s Start <span class="text-gradient">Your Project</span>
+    </h2><p>Tell me what you’re building — I’ll reply as soon as possible.</p>`,
 
   send_message_title: "Send me a message",
-  send_message_description: "Share your requirements and I’ll get back to you soon.",
+  send_message_description:
+    "Share your requirements and I’ll get back to you soon.",
 
   visit_message_title: "Location",
   visit_message_description: "Remote collaboration available.",
@@ -184,16 +386,24 @@ export const contactUs = {
 };
 
 export const contactInfo = [
-  { icon: "Mail", info: "shahidalirajpoot2@gmail.com", link: "mailto:shahidalirajpoot2@gmail.com" },
+  {
+    icon: "Mail",
+    info: "shahidalirajpoot2@gmail.com",
+    link: "mailto:shahidalirajpoot2@gmail.com",
+  },
   { icon: "Phone", info: "+92 307 6669269", link: "tel:+923076669269" },
-  { icon: "MapPin", info: "Burewala, Vehari, Pakistan", link: "https://maps.google.com/?q=Burewala%2C%20Vehari%2C%20Pakistan" },
+  {
+    icon: "MapPin",
+    info: "Burewala, Vehari, Pakistan",
+    link: "https://maps.google.com/?q=Burewala%2C%20Vehari%2C%20Pakistan",
+  },
 ];
 
 export const TESTIMONIALS_PAGE_CONTENT: TestimonialsPageContent = {
   testimonial_badge: "Testimonials",
   testimonial_detail: `
     <h2 class="section-title">
-      What people say <span class="text-gradient">after working with me</span>
+    What People Say <span class="text-gradient">After Working with Me</span>
     </h2>
     <p class="section-desc">
       Feedback focused on UI quality, communication, and on-time delivery.
@@ -333,12 +543,11 @@ export const TESTIMONIALS_DATA: TestimonialItem[] = [
   // },
 ];
 
-
 export const TECHNOLOGIES_PAGE_CONTENT: TechnologiesPageContent = {
   technology_badge: "Technologies",
   technology_detail: `
     <h2 class="section-title">
-      Tools I use to build <span class="text-gradient">fast & modern UI</span>
+    Tools I Use to Build <span class="text-gradient">Fast, Modern UI</span>
     </h2>
     <p class="section-desc">
       A focused tech stack for frontend, backend, databases, deployment and performance.
@@ -505,8 +714,6 @@ export const TECH_STACK_DATA: TechStackData = {
       Performance: 78,
     },
   ],
-
-
 };
 
 export const PORTFOLIO_PAGE_CONTENT: PortfolioPageContent = {
@@ -599,7 +806,6 @@ export const PORTFOLIO_PAGE_CONTENT: PortfolioPageContent = {
 
 // ✅ Update your type to support multiple images
 
-
 export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
   {
     title: "MailCub — Marketing Website",
@@ -614,7 +820,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       { src: "/images/p3_4.png", alt: "MailCub website hero section" },
       { src: "/images/p3_5.png", alt: "MailCub website features section" },
       { src: "/images/p3_6.png", alt: "MailCub website pricing/cta section" },
-      { src: "/images/p3_7.png", alt: "MailCub website pricing/cta section" }
+      { src: "/images/p3_7.png", alt: "MailCub website pricing/cta section" },
     ],
     link: "https://mailcub.com/",
   },
@@ -705,7 +911,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       { src: "/images/p6_5.png", alt: "MailCub website features section" },
       { src: "/images/p6_6.png", alt: "MailCub website pricing/cta section" },
       { src: "/images/p6_7.png", alt: "MailCub website pricing/cta section" },
-      { src: "/images/p6_8.png", alt: "MailCub website hero section" }
+      { src: "/images/p6_8.png", alt: "MailCub website hero section" },
     ],
     link: "https://adminwishgenie.devflips.com/login",
   },
@@ -755,7 +961,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       { src: "/images/p8_4.png", alt: "MailCub website hero section" },
       { src: "/images/p8_5.png", alt: "MailCub website features section" },
       { src: "/images/p8_6.png", alt: "MailCub website pricing/cta section" },
-      { src: "/images/p8_7.png", alt: "MailCub website pricing/cta section" }
+      { src: "/images/p8_7.png", alt: "MailCub website pricing/cta section" },
     ],
     link: "https://dynamiclogix.com/",
   },
@@ -785,7 +991,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       { src: "/images/p9_5.png", alt: "MailCub website features section" },
       { src: "/images/p9_6.png", alt: "MailCub website pricing/cta section" },
       { src: "/images/p9_7.png", alt: "MailCub website pricing/cta section" },
-      { src: "/images/p9_8.png", alt: "MailCub website hero section" }
+      { src: "/images/p9_8.png", alt: "MailCub website hero section" },
     ],
     link: "https://websitesadmindev.metalogixtech.com/login",
   },
@@ -802,14 +1008,16 @@ export const HERO_PAGE_CONTENT: HeroPageContent = {
   hero_heading: "Modern UI, fast performance, clean code",
 
   hero_description: `
-    <h1 class="hero-title">Hi, I’m Shahid Anwaar</h1>
+    <h1 class="hero-title">React & Next.js Frontend Developer</h1>
     <p class="hero-desc">
-      I build <strong>scalable dashboards</strong>, <strong>client portals</strong>, and
-      <strong>responsive websites</strong> using
-      <strong> ReactJS, Next.js, TypeScript</strong> with
-      <strong> TailwindCSS, MUI, Bootstrap</strong>.
-      Strong in <strong>REST API integration</strong> (Auth, CRUD, real-time updates).
-    </p>
+  Hi, I’m <strong>Shahid Anwaar</strong> — I build fast, modern
+  <strong>dashboards</strong>, <strong>client portals</strong>,
+  <strong>landing pages</strong>, and <strong>API-integrated web apps</strong>
+  using <strong>React.js, Next.js, TypeScript</strong>, and
+  <strong>Tailwind CSS</strong> for startups, SaaS products, and businesses
+  worldwide. Strong in <strong>REST API integration</strong>, including auth,
+  CRUD, dashboards, forms, filters, and real-time UI updates.
+</p>
   `,
 
   hero_services_heading: "Core Skills",
@@ -874,7 +1082,7 @@ export const ABOUT_PAGE_CONTENT: AboutPageContent = {
   about_badge: "About Me",
   about_detail: `
     <h2 class="section-title">
-      Building modern UIs with <span class="text-gradient">React & Next.js</span>
+      Building Modern UI with <span class="text-gradient">React & Next.js</span>
     </h2>
     <p class="section-desc">
       I focus on clean, responsive interfaces and strong API integration.
@@ -928,13 +1136,32 @@ export const ABOUT_US: AboutUsContent = {
   `,
 
   stats: [
-    { icon: "Users", number: "10+", label: "Projects Delivered", color: "blue" },
-    { icon: "Award", number: "1+", label: "Professional Experience", color: "purple" },
-    { icon: "TrendingUp", number: "Fast", label: "Delivery & Support", color: "green" },
-    { icon: "Globe", number: "React", label: "Next.js + TS Focus", color: "orange" },
+    {
+      icon: "Users",
+      number: "10+",
+      label: "Projects Delivered",
+      color: "blue",
+    },
+    {
+      icon: "Award",
+      number: "1+",
+      label: "Professional Experience",
+      color: "purple",
+    },
+    {
+      icon: "TrendingUp",
+      number: "Fast",
+      label: "Delivery & Support",
+      color: "green",
+    },
+    {
+      icon: "Globe",
+      number: "React",
+      label: "Next.js + TS Focus",
+      color: "orange",
+    },
   ],
 };
-
 
 export const SERVICES_PAGE_CONTENT: ServicesPageContent = {
   service_badge: "Services",
@@ -1006,7 +1233,12 @@ export const SERVICES_LIST: ServiceItem[] = [
     projects: "Landing • Dashboard • Portal",
     description:
       "Build pages for marketing, admin dashboards, and client portals with smooth navigation and clean structure.",
-    features: ["Landing Pages", "Admin UI", "Client Portal", "Reusable Sections"],
+    features: [
+      "Landing Pages",
+      "Admin UI",
+      "Client Portal",
+      "Reusable Sections",
+    ],
     gradient: "pink",
   },
   {
@@ -1025,7 +1257,7 @@ export const INDUSTRIES_PAGE_CONTENT: IndustriesPageContent = {
 
   industry_description: `
     <h2 class="section-title">
-      Experience across <span class="text-gradient">real-world products</span>
+      Experience Across <span class="text-gradient">Real-World Products</span>
     </h2>
     <p class="section-desc">
       I’ve built modern UI for different types of businesses — from admin dashboards and portals
@@ -1050,67 +1282,72 @@ export const INDUSTRIES_PAGE_CONTENT: IndustriesPageContent = {
 export const INDUSTRIES_LIST: IndustryItem[] = [
   {
     title: "SaaS Dashboards",
-    description: "Admin panels, analytics UI, tables, filters, roles, and clean component structure.",
+    description:
+      "Admin panels, analytics UI, tables, filters, roles, and clean component structure.",
     projects: "Dashboards / Admin UI",
     icon: "Building",
     colorVariant: "blue",
   },
   {
     title: "E-commerce & Stores",
-    description: "Product listing pages, detail pages, cart flows, and responsive store layouts.",
+    description:
+      "Product listing pages, detail pages, cart flows, and responsive store layouts.",
     projects: "Storefront UI",
     icon: "ShoppingBag",
     colorVariant: "pink",
   },
   {
     title: "Education Platforms",
-    description: "Course pages, content sections, portals, and smooth navigation experiences.",
+    description:
+      "Course pages, content sections, portals, and smooth navigation experiences.",
     projects: "Portal UI",
     icon: "GraduationCap",
     colorVariant: "purple",
   },
   {
     title: "Health & Wellness",
-    description: "Clean UX for wellness apps, content pages, and mobile-first UI layouts.",
+    description:
+      "Clean UX for wellness apps, content pages, and mobile-first UI layouts.",
     projects: "Wellness UI",
     icon: "Heart",
     colorVariant: "green",
   },
   {
     title: "Real Estate / Property",
-    description: "Listings UI, cards, filters, and conversion-focused landing pages.",
+    description:
+      "Listings UI, cards, filters, and conversion-focused landing pages.",
     projects: "Listing UI",
     icon: "Home",
     colorVariant: "orange",
   },
   {
     title: "Logistics / Delivery",
-    description: "Status screens, tracking style UI, and structured layout for operational tools.",
+    description:
+      "Status screens, tracking style UI, and structured layout for operational tools.",
     projects: "Operational UI",
     icon: "Truck",
     colorVariant: "blue",
   },
   {
     title: "Finance / Billing UI",
-    description: "Forms, validations, invoice-style pages, and secure-looking UI patterns.",
+    description:
+      "Forms, validations, invoice-style pages, and secure-looking UI patterns.",
     projects: "Forms & UI",
     icon: "DollarSign",
     colorVariant: "green",
   },
   {
     title: "Web Apps & Portals",
-    description: "Modern websites, client portals, and API integrated pages with Next.js.",
+    description:
+      "Modern websites, client portals, and API integrated pages with Next.js.",
     projects: "Web UI",
     icon: "Globe",
     colorVariant: "purple",
   },
 ];
 
-
-
 // services
 // industries
 // projects
 // technologies
 // about
-

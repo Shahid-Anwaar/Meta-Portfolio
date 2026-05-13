@@ -68,7 +68,7 @@ const Portfolio = ({ pageContent, portfolioData }: PortfolioProps) => {
           >
             <motion.img
               src={current?.src || "/portfolio/placeholder.jpg"}
-              alt={current?.alt || title}
+              alt={current?.alt || title + i}
               className="portfolio-image w-full h-full cursor-pointer"
               initial={{ opacity: 0, scale: 1.02 }}
               animate={{ opacity: 1, scale: 1 }}
