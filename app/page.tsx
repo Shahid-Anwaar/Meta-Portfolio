@@ -27,7 +27,7 @@ export default function Home() {
         pageContent={TESTIMONIALS_PAGE_CONTENT}
         testimonials={TESTIMONIALS_DATA}
       />
-      <Contact contactUs={contactUs} contactInfo={contactInfo} />
+      <Contact contactUs={contactUs} />
       <Footer menuItems={footerMenuItems} data={footerData} contactInfo={footerContactInfo} />
     </div>
   );
